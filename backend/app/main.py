@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from config import settings
+from routers import health
 
 app = FastAPI(
     title="TutorIA Cuba API",
@@ -19,19 +20,5 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-@app.get("/")
-def raiz():
-    return {
-        "status": "ok",
-        "proyecto": "TutorIA Cuba",
-        "version": "0.1.0",
-        "environment": settings.environment
-    }
-
-@app.get("/health")
-def health_check():
-    return {
-        "status": "healthy",
-        "service": "tutoria-cuba-api",
-        "version": "0.1.0"
-    }
+# Incluir routers
+app.include_router(health.router)
