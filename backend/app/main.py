@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from config import settings
-from routers import health, ia, institucional
+from routers import health, ia, institucional, tcp
 
 app = FastAPI(
     title="TutorIA Cuba API",
@@ -24,3 +24,4 @@ app.add_middleware(
 app.include_router(health.router)
 app.include_router(ia.router)
 app.include_router(institucional.router)
+app.include_router(tcp.router)
