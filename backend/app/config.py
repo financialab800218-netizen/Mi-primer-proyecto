@@ -6,6 +6,8 @@ class Settings(BaseSettings):
     database_url: str = ""
     secret_key: str = "cambia_esto"
     environment: str = "development"
+    supabase_url: str = ""
+    supabase_key: str = ""
 
     class Config:
         env_file = ".env"
