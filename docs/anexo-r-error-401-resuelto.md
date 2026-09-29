@@ -16,13 +16,13 @@ CAUSA REAL (dos problemas):
    (Corregido previamente)
 
 2. La API KEY usada era la "publishable" (pública):
-   - sb_publishable_...
+   - [CREDENCIAL_ROTADA]...
    - Esta key solo sirve para frontend
    - NO tiene permisos para operaciones de backend
 
 SOLUCIÓN:
 Cambiar la key de "publishable" a "service_role":
-- SUPABASE_KEY=sb_secret_...
+- SUPABASE_KEY=[CREDENCIAL_ROTADA]...
 - Esta key tiene permisos completos de backend
 
 VERIFICACIÓN:
