@@ -247,3 +247,113 @@ El profesor acumula ingresos por:
 ## 7. Consentimiento Informado
 
 **Al registrarse, el profesor ACEPTA explícitamente:**
+Al registrarse, el profesor ACEPTA perfectamente:
+
+- Los plazos de formalización (60 días activo, 90 días congelado, 180 días en reserva).
+- Las consecuencias de no formalizar (transferencia al Fondo de Becas al día 181).
+- La política de acumulación y cobro.
+- El derecho a reincorporarme hasta el día 180 y recuperar todo mi acumulado.
+- El uso del Fondo de Becas para fines sociales.
+
+Sin este consentimiento, el registro no se completa.
+
+---
+
+## 8. Comunicación al Profesor
+
+### 8.1. Canales
+
+| Canal | Uso |
+|-------|-----|
+| Email | Comunicaciones formales y de plazos |
+| WhatsApp | Recordatorios y avisos urgentes |
+| SMS | Fallback para avisos críticos |
+| App/Dashboard | Estado en tiempo real |
+
+### 8.2. Cronograma de notificaciones
+
+| Día | Canal | Mensaje |
+|-----|-------|---------|
+| 0 | Email + App | Bienvenida + explicación de plazos |
+| 30 | Email + WhatsApp | Recordatorio suave |
+| 45 | Email + WhatsApp | Recordatorio urgente |
+| 55 | Email + WhatsApp + SMS | Aviso final |
+| 60 | Email + App | Cuenta congelada |
+| 80 | Email | Últimos 10 días para formalizar |
+| 90 | Email + App | Pasa a Reserva (6 meses) |
+| 120 | Email | Recordatorio: 3 meses |
+| 150 | Email | Recordatorio: 1 mes |
+| 175 | Email + WhatsApp + SMS | Último aviso: 5 días |
+| 180 | Email + App | Transferencia al Fondo de Becas |
+
+---
+
+## 9. Rol de los Agentes IA
+
+| Agente | Rol en esta política |
+|--------|----------------------|
+| Pablo | Supervisa el ciclo, aprueba excepciones humanitarias |
+| Ernesto | Calcula acumulados, procesa pagos, reporta a ONAT |
+| Marta | Verifica documentación legal, valida contratos TCP |
+| Celia | Acompaña pedagógicamente al profesor |
+| Julián | Gestiona comunicación, cobros, incentivos |
+| Rubén | Soporte técnico de la plataforma |
+
+---
+
+## 10. Casos Especiales
+
+### 10.1. Profesor con enfermedad comprobada
+
+- Puede solicitar extensión de 90 días adicionales.
+- Requiere certificado médico.
+- Aprobación por la Dirección de TutorIA.
+
+### 10.2. Profesor que fallece
+
+- Su acumulado pasa a sus herederos legales.
+- Se documenta con certificado de defunción.
+- Proceso legal simplificado.
+
+### 10.3. Profesor que migra
+
+- Puede solicitar retiro de acumulado antes de irse.
+- Requiere formalización de TCP (aunque sea temporal).
+- Si no formaliza, acumulado va al Fondo de Becas.
+
+### 10.4. Profesor con discapacidad
+
+- Prioridad en asignaciones.
+- Posibilidad de formalización simplificada.
+- Bonos +20% adicionales.
+
+---
+
+## 11. Registro de Cambios
+
+| Versión | Fecha | Cambio |
+|---------|-------|--------|
+| 1.0 | 30/sep/2026 | Creación inicial |
+
+---
+
+## 12. Anexos Relacionados
+
+- anexo-v-regla-seguridad.md - Reglas de seguridad
+- anexo-t-plan-etapas.md - Plan de implementación
+- anexo-aa-analisis-integral-proyecto.md - Análisis general
+- anexo-ab-malla-curricular.md - Malla curricular (por crear)
+- anexo-ac-onboarding-profesores.md - Onboarding (por crear)
+
+---
+
+## 13. Contacto
+
+**Dirección TutorIA Cuba**
+Email: contacto@tutoriacuba.cu (por definir)
+WhatsApp: +53 5 375 5025
+GitHub: financialab800218-netizen
+
+---
+
+**Documento oficial de TutorIA Cuba - 30/septiembre/2026**
