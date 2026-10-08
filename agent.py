@@ -24,30 +24,14 @@ Cuando tengas la respuesta, responde de forma clara y concisa.
 Siempre cita el archivo de donde sacaste la informacion."""
 
 def ejecutar_tool(nombre, args):
-    if nombre == "leer_archivo":
-        return leer_archivo(args.get("ruta", ""))
-    elif nombre == "listar_archivos":
-        return listar_archivos(args.get("carpeta", "."))
-    elif nombre == "buscar_texto":
-        return buscar_texto(args.get("patron", ""), args.get("carpeta", "docs"))
-    else:
-        return "[Error] Tool desconocida: " + nombre
+    from tools import ejecutar_herramienta
+    return ejecutar_herramienta(nombre, args)
 
 SYSTEM_PROMPT = """Eres un asistente del proyecto TutorIA Cuba.
 Tienes acceso a herramientas para leer archivos del proyecto.
 Usa las herramientas cuando necesites informacion que no sabes.
 Cuando tengas la respuesta, responde de forma clara y concisa.
 Siempre cita el archivo de donde sacaste la informacion."""
-
-def ejecutar_tool(nombre, args):
-    if nombre == "leer_archivo":
-        return leer_archivo(args.get("ruta", ""))
-    elif nombre == "listar_archivos":
-        return listar_archivos(args.get("carpeta", "."))
-    elif nombre == "buscar_texto":
-        return buscar_texto(args.get("patron", ""), args.get("carpeta", "docs"))
-    else:
-        return "[Error] Tool desconocida: " + nombre
 
 def consultar_agente(pregunta):
     if not NVIDIA_KEY:
