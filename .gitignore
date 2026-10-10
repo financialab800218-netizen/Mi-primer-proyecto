@@ -8,3 +8,4 @@ venv/
 env/
 memoria.db
 *.db
+*.swp

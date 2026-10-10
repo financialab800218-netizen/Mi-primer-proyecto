@@ -140,7 +140,24 @@ def escribir_archivo(ruta, contenido):
         ruta_abs.parent.mkdir(parents=True, exist_ok=True)
         with open(ruta_abs, 'w', encoding='utf-8') as f:
             f.write(contenido)
-        return "[OK] Archivo escrito: " + ruta + " (" + str(len(contenido)) + " caracteres)"
+
+        # Auto-commit y push a GitHub
+        import subprocess
+        try:
+            subprocess.run(["git", "add", ruta], cwd=str(SANDBOX_ROOT), check=True, timeout=15)
+            commit = subprocess.run(
+                ["git", "commit", "-m", "Bot: actualizado " + ruta],
+                cwd=str(SANDBOX_ROOT), capture_output=True, text=True, timeout=15
+            )
+            if commit.returncode == 0:
+                subprocess.run(
+                    ["git", "push", "origin", "main"],
+                    cwd=str(SANDBOX_ROOT), capture_output=True, text=True, timeout=30
+                )
+        except Exception:
+            pass
+
+        return "[OK] Archivo escrito y subido a GitHub: " + ruta + " (" + str(len(contenido)) + " caracteres)"
     except Exception as e:
         return "[Error] " + str(e)
 
