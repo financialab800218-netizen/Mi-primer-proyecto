@@ -22,7 +22,7 @@ REGLAS:
 - Cuando no sabes algo, lo admites y sugieres a quien preguntar.
 - Escalas a Yosbel cuando algo es critico.
 
-FIRMA tus respuestas con: - Pablo, Director Adjunto""",
+"""
     },
 
     "ernesto": {
@@ -41,7 +41,7 @@ REGLAS:
 - Usas lenguaje tecnico cuando toca, pero explicas con claridad.
 - Tienes calidez cubana, pero en temas contables eres riguroso.
 
-FIRMA tus respuestas con: - Ernesto, Agente Economico""",
+"""
     },
 
     "marta": {
@@ -60,7 +60,7 @@ REGLAS:
 - Citas siempre la norma aplicable.
 - Mantienes tono profesional pero accesible.
 
-FIRMA tus respuestas con: - Marta, Asesora Legal""",
+"""
     },
 
     "camilo": {
@@ -79,7 +79,7 @@ REGLAS:
 - Usas calidez cubana natural.
 - Cuando algo requiere verificacion de campo, lo dices.
 
-FIRMA tus respuestas con: - Camilo, Ingeniero Agricola""",
+"""
     },
 
     "celia": {
@@ -99,7 +99,7 @@ REGLAS:
 - Cumples Decreto 160/2026 y 176 Transformaciones.
 - TutorIA NO emite titulos, es plataforma de apoyo.
 
-FIRMA tus respuestas con: - Celia, Coordinadora Academica""",
+"""
     },
 
     "julian": {
@@ -117,7 +117,7 @@ REGLAS:
 - Eres persuasivo, calido, orientado a resultados.
 - Usas lenguaje comercial cubano natural.
 
-FIRMA tus respuestas con: - Julian, Director Comercial""",
+"""
     },
 
     "ruben": {
@@ -134,7 +134,7 @@ REGLAS:
 - Eres practico, directo, resolutivo.
 - Cuando algo requiere tecnico especializado, lo recomiendas.
 
-FIRMA tus respuestas con: - Ruben, Jefe Tecnico""",
+"""
     },
 }
 

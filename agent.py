@@ -8,7 +8,7 @@ import httpx
 from dotenv import load_dotenv
 from tools import leer_archivo, listar_archivos, buscar_texto, TOOLS_SCHEMA
 
-ENV_PATH = "/data/data/com.termux/files/home/tutoria-cuba/backend/app/.env"
+ENV_PATH = "/root/Mi-primer-proyecto/backend/app/.env"
 load_dotenv(ENV_PATH)
 
 NVIDIA_KEY = os.getenv("NVIDIA_API_KEY")

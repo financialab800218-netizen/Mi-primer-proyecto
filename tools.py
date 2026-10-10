@@ -1,7 +1,7 @@
 import json
 from pathlib import Path
 
-SANDBOX_ROOT = Path("/data/data/com.termux/files/home/tutoria-cuba").resolve()
+SANDBOX_ROOT = Path("/root/Mi-primer-proyecto").resolve()
 MAX_FILE_SIZE = 50000
 MAX_RESULTS = 50
 EXTENSIONES_TEXTO = ['.md', '.py', '.txt', '.json', '.env', '.yaml', '.yml']

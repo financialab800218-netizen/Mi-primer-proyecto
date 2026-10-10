@@ -3,7 +3,7 @@ import sqlite3
 from datetime import datetime
 from pathlib import Path
 
-DB_PATH = Path("/data/data/com.termux/files/home/tutoria-cuba/memoria.db")
+DB_PATH = Path("/root/Mi-primer-proyecto/memoria.db")
 
 def _conn():
     con = sqlite3.connect(DB_PATH)

@@ -23,10 +23,11 @@ from telegram.ext import (
 
 from agents import COMANDOS, get_agent_by_command, get_agent_info, listar_agentes
 from llm_client import consultar_llm, tiene_llm, info_proveedor
+from llm_tools import consultar_llm_con_tools
 
 
 # Cargar .env (ruta absoluta)
-ENV_PATH = "/data/data/com.termux/files/home/tutoria-cuba/backend/app/.env"
+ENV_PATH = "/root/Mi-primer-proyecto/backend/app/.env"
 load_dotenv(ENV_PATH)
 
 TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
@@ -152,7 +153,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.chat.send_action(action="typing")
 
     if tiene_llm():
-        respuesta = await consultar_llm(agente["system_prompt"], mensaje)
+        respuesta = await consultar_llm_con_tools(agente["system_prompt"], mensaje)
         firma = f"\n\n- {agente['nombre']}, {agente['cargo']}"
         await update.message.reply_text((respuesta or "[Sin respuesta]") + firma)
     else:
