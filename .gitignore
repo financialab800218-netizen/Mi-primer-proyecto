@@ -6,3 +6,6 @@ paquetes/
 .DS_Store
 venv/
 env/
+memoria.db
+*.db
+*.swp

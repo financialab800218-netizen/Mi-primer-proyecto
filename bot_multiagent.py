@@ -22,10 +22,12 @@ from telegram.ext import (
 )
 
 from agents import COMANDOS, get_agent_by_command, get_agent_info, listar_agentes
+from llm_client import consultar_llm, tiene_llm, info_proveedor
+from llm_tools import consultar_llm_con_tools
 
 
 # Cargar .env (ruta absoluta)
-ENV_PATH = "/data/data/com.termux/files/home/tutoria-cuba/backend/app/.env"
+ENV_PATH = "/root/Mi-primer-proyecto/backend/app/.env"
 load_dotenv(ENV_PATH)
 
 TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
@@ -42,12 +44,12 @@ logger = logging.getLogger(__name__)
 user_agents = {}
 
 
-def tiene_deepseek():
+def tiene_llm():
     return DEEPSEEK_KEY and DEEPSEEK_KEY != "tu_api_key_aqui" and len(DEEPSEEK_KEY) > 20
 
 
 async def consultar_llm(system_prompt, mensaje):
-    if not tiene_deepseek():
+    if not tiene_llm():
         return None
     try:
         headers = {
@@ -55,7 +57,7 @@ async def consultar_llm(system_prompt, mensaje):
             "Content-Type": "application/json",
         }
         payload = {
-            "model": "deepseek-chat",
+            "model": "openai/gpt-oss-20b",
             "messages": [
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": mensaje},
@@ -81,7 +83,7 @@ async def consultar_llm(system_prompt, mensaje):
 async def cmd_start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.effective_user.id
     user_agents[user_id] = "pablo"
-    estado_ia = "ACTIVA" if tiene_deepseek() else "PENDIENTE (fondear $5)"
+    estado_ia = "ACTIVA" if tiene_llm() else "PENDIENTE (fondear $5)"
     mensaje = (
         "Hola Yosbel. Bienvenido al Ecosistema Mayabeque.\n\n"
         f"IA DeepSeek: {estado_ia}\n\n"
@@ -150,8 +152,8 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     await update.message.chat.send_action(action="typing")
 
-    if tiene_deepseek():
-        respuesta = await consultar_llm(agente["system_prompt"], mensaje)
+    if tiene_llm():
+        respuesta = await consultar_llm_con_tools(agente["system_prompt"], mensaje)
         firma = f"\n\n- {agente['nombre']}, {agente['cargo']}"
         await update.message.reply_text((respuesta or "[Sin respuesta]") + firma)
     else:
@@ -189,7 +191,7 @@ def main():
         print("ERROR: falta TELEGRAM_BOT_TOKEN")
         return
     print("Bot multi-agente iniciado")
-    print(f"DeepSeek: {'ACTIVO' if tiene_deepseek() else 'PENDIENTE'}")
+    print(f"DeepSeek: {'ACTIVO' if tiene_llm() else 'PENDIENTE'}")
     while True:
         try:
             print("Conectando con Telegram...")
