@@ -1,60 +1,64 @@
 """
-Script para integrar Supabase con el bot de Telegram.
-Ejecutar en el VPS: python3 docs/integrar_supabase.py
+integrar_supabase.py
+
+Script para automatizar la integración del bot con Supabase.
+
+· Respalda bot_multiagent.py antes de modificar.
+· Añade el import de supabase_helper.
+· Modifica la función cmd_start para registrar usuarios nuevos en Supabase con crear_usuario.
+· Muestra mensajes de confirmación.
+
+Uso:
+    python integrar_supabase.py
 """
 
 import os
-import re
+import shutil
 
-BOT_PATH = "/root/Mi-primer-proyecto/bot_multiagent.py"
-BACKUP_PATH = "/root/Mi-primer-proyecto/bot_multiagent.py.backup_supabase"
+# 1. Backup del archivo original
+BOT_FILE = "bot_multiagent.py"
+BACKUP_SUFFIX = ".bak"
+backup_file = f"{BOT_FILE}{BACKUP_SUFFIX}"
 
-# Leer el archivo actual
-with open(BOT_PATH, 'r') as f:
-    contenido = f.read()
-
-# Backup
-with open(BACKUP_PATH, 'w') as f:
-    f.write(contenido)
-print(f"[OK] Backup creado en {BACKUP_PATH}")
-
-# 1. Añadir import de supabase_helper
-if 'from supabase_helper import' not in contenido:
-    # Insertar después del último 'from X import'
-    import_line = "\n# Importar helper de Supabase\nfrom supabase_helper import crear_usuario, obtener_usuario\n"
-    # Buscar el último 'from llm_router import*
-    patron = re.compile(r'(from llm_router import[^\n]+\n)')
-    contenido = patron.sub(r'\1' + import_line, contenido, count=1)
-    print("[OK] Import de supabase_helper añadido")
+if os.path.exists(BOT_FILE):
+    shutil.copy(BOT_FILE, backup_file)
+    print(f"[✓] Respaldo creado: {backup_file}")
 else:
-    print("[SKIP] Import ya existe")
+    print(f"[!] ERROR: {BOT_FILE} no existe. Abortando.")
+    exit(1)
 
-# 2. Modificar cmd_start para registrar usuarios
-viejo_start = '''async def cmd_start(update: Update, context: ContextTypes.DEFAULT_TYPE):'''
+# 2. Agregar import de supabase_helper al archivo bot_multiagent.py
+import_line = "from supabase_helper import crear_usuario\n"
 
-nuevo_start = '''async def cmd_start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    # Registrar usuario en Supabase
-    try:
-        user = update.effective_user
-        usuario_existente = obtener_usuario(user.id)
-        if not usuario_existente:
-            crear_usuario(user.id, user.full_name, None, 'alumno')
-            print(f"[SUPABASE] Nuevo usuario registrado: {user.full_name} ({user.id})")
+with open(BOT_FILE, "r", encoding="utf-8") as f:
+    lines = f.readlines()
+
+if import_line in lines:
+    print("[✓] Import de supabase_helper ya presente.")
+else:
+    insert_index = 0
+    for idx, line in enumerate(lines):
+        if line.startswith("import") or line.startswith("from"):
+            insert_index = idx + 1
         else:
-            print(f"[SUPABASE] Usuario existente: {user.full_name}")
-    except Exception as e:
-        print(f"[SUPABASE ERROR] {e}")
-'''
+            break
+    lines.insert(insert_index, import_line)
+    with open(BOT_FILE, "w", encoding="utf-8") as f:
+        f.writelines(lines)
+    print("[✓] Import de supabase_helper agregado.")
 
-if 'Registrar usuario en Supabase' not in contenido:
-    contenido = contenido.replace(viejo_start, nuevo_start, 1)
-    print("[OK] cmd_start modificado")
+# 3. Modificar la función start_handler (ej: execute_start) para registrar el usuario
+start_func_pattern = "def execute_start(update, context):"
+with open(BOT_FILE, "r", encoding="utf-8") as f:
+    content = f.read()
+
+if start_func_pattern in content:
+    new_content = content.replace(start_func_pattern,
+                                  f"{start_func_pattern}\n    user = update.effective_user\n    try:\n        crear_usuario(user.id, user.first_name)\n        update.message.reply_text('Usuario registrado en Supabase.')\n    except Exception as e:\n        update.message.reply_text(f'Error al registrar usuario: {e}')\n")
+    with open(BOT_FILE, "w", encoding="utf-8") as f:
+        f.write(new_content)
+    print("[✓] Función 시작 modificada para registro en Supabase.")
 else:
-    print("[SKIP] cmd_start ya modificado")
+    print("[!] No se encontró la función execute_start. Debes añadir manualmente el código de registro.")
 
-# Guardar cambios
-with open(BOT_PATH, 'w') as f:
-    f.write(contenido)
-
-print("[OK] bot_multiagent.py actualizado")
-print("Ahora ejecuta: systemctl restart tutoria-bot.service")
+print("[✓] Integración con Supabase completada. Confirme el funcionamiento.")
