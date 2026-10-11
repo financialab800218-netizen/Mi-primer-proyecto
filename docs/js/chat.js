@@ -1,4 +1,4 @@
-const API_URL = "https://said-structural-occasional-philadelphia.trycloudflare.com";
+const API_URL = "https://common-rats-starting-nokia.trycloudflare.com";
 
 const $ = (id) => document.getElementById(id);
 let agenteActual = "pablo";
