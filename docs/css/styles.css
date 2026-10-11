@@ -154,3 +154,34 @@ footer {
   color: var(--muted);
   border-top: 1px solid var(--border);
 }
+
+.menu-opciones {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: var(--bg);
+  border-radius: 10px;
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 500;
+  font-size: 15px;
+  transition: background 0.2s;
+}
+
+.menu-item:hover {
+  background: #e8eef4;
+}
+
+.menu-item .icono {
+  font-size: 22px;
+  width: 28px;
+  text-align: center;
+}
