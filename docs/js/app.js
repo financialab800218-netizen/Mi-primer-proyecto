@@ -2,7 +2,7 @@
 // TutorIA Cuba - PWA
 // ============================================
 
-const API_URL = "https://builds-portable-constitutional-oaks.trycloudflare.com";
+const API_URL = "https://said-structural-occasional-philadelphia.trycloudflare.com";
 
 const $ = (id) => document.getElementById(id);
 
