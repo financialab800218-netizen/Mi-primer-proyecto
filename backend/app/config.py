@@ -8,6 +8,7 @@ class Settings(BaseSettings):
     environment: str = "development"
     supabase_url: str = ""
     supabase_key: str = ""
+    jwt_secret: str = ""
 
     class Config:
         env_file = ".env"

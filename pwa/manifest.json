@@ -1,0 +1,23 @@
+{
+  "name": "TutorIA Cuba",
+  "short_name": "TutorIA",
+  "description": "Ecosistema educativo Mayabeque",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f5f7fa",
+  "theme_color": "#0a4d68",
+  "orientation": "portrait",
+  "lang": "es",
+  "icons": [
+    {
+      "src": "https://ui-avatars.com/api/?name=TutorIA&background=0a4d68&color=fff&size=192&rounded=true",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://ui-avatars.com/api/?name=TutorIA&background=0a4d68&color=fff&size=512&rounded=true",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
