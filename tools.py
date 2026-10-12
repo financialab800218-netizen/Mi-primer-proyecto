@@ -273,3 +273,101 @@ TOOLS_SCHEMA.append({
         }
     }
 })
+
+def generar_imagen(prompt, nombre_archivo="imagen_generada.png"):
+    import os, base64
+    from datetime import datetime
+    api_key = os.getenv("AGNES_API_KEY")
+    base_url = os.getenv("AGNES_BASE_URL", "https://apihub.agnes-ai.com/v1")
+    modelo = os.getenv("AGNES_IMAGE_MODEL", "agnes-image-2.5-flash")
+    if not api_key:
+        return "[Error] AGNES_API_KEY no configurada"
+    try:
+        import httpx
+        payload = {"model": modelo, "prompt": prompt, "n": 1, "size": "1024x1024"}
+        headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
+        r = httpx.post(f"{base_url}/images/generations", headers=headers, json=payload, timeout=120)
+        if r.status_code != 200:
+            return f"[Error] Agnes respondio {r.status_code}: {r.text[:200]}"
+        data = r.json()
+        if "data" not in data or not data["data"]:
+            return "[Error] Respuesta sin imagen"
+        item = data["data"][0]
+        carpeta = "/root/Mi-primer-proyecto/imagenes_generadas"
+        os.makedirs(carpeta, exist_ok=True)
+        ruta = os.path.join(carpeta, nombre_archivo)
+        if "b64_json" in item:
+            with open(ruta, "wb") as f:
+                f.write(base64.b64decode(item["b64_json"]))
+        elif "url" in item:
+            img = httpx.get(item["url"], timeout=60)
+            with open(ruta, "wb") as f:
+                f.write(img.content)
+        else:
+            return "[Error] Formato de respuesta desconocido"
+        return f"[OK] Imagen creada: {ruta}"
+    except Exception as e:
+        return f"[Error] {str(e)[:200]}"
+
+def generar_video(prompt, nombre_archivo="video_generado.mp4"):
+    import os
+    api_key = os.getenv("AGNES_API_KEY")
+    base_url = os.getenv("AGNES_BASE_URL", "https://apihub.agnes-ai.com/v1")
+    modelo = os.getenv("AGNES_VIDEO_MODEL", "agnes-video-2.5-flash")
+    if not api_key:
+        return "[Error] AGNES_API_KEY no configurada"
+    try:
+        import httpx
+        payload = {"model": modelo, "prompt": prompt}
+        headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
+        r = httpx.post(f"{base_url}/videos/generations", headers=headers, json=payload, timeout=300)
+        if r.status_code != 200:
+            return f"[Error] Agnes respondio {r.status_code}: {r.text[:200]}"
+        data = r.json()
+        if "data" not in data or not data["data"]:
+            return "[Error] Respuesta sin video"
+        item = data["data"][0]
+        url = item.get("url")
+        if not url:
+            return "[Error] No se obtuvo URL del video"
+        carpeta = "/root/Mi-primer-proyecto/videos_generados"
+        os.makedirs(carpeta, exist_ok=True)
+        ruta = os.path.join(carpeta, nombre_archivo)
+        vid = httpx.get(url, timeout=180)
+        with open(ruta, "wb") as f:
+            f.write(vid.content)
+        return f"[OK] Video creado: {ruta}"
+    except Exception as e:
+        return f"[Error] {str(e)[:200]}"
+
+TOOLS_SCHEMA.append({
+    "type": "function",
+    "function": {
+        "name": "generar_imagen",
+        "description": "Genera una imagen a partir de una descripcion. Util para crear diagramas, ilustraciones y material visual educativo.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "prompt": {"type": "string", "description": "Descripcion detallada de la imagen a generar"},
+                "nombre_archivo": {"type": "string", "description": "Nombre del archivo (opcional, por defecto imagen_generada.png)"}
+            },
+            "required": ["prompt"]
+        }
+    }
+})
+
+TOOLS_SCHEMA.append({
+    "type": "function",
+    "function": {
+        "name": "generar_video",
+        "description": "Genera un video a partir de una descripcion. Util para crear material audiovisual educativo.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "prompt": {"type": "string", "description": "Descripcion detallada del video a generar"},
+                "nombre_archivo": {"type": "string", "description": "Nombre del archivo (opcional, por defecto video_generado.mp4)"}
+            },
+            "required": ["prompt"]
+        }
+    }
+})
