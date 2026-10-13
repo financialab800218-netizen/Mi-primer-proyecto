@@ -61,6 +61,5 @@ async def consultar_llm_con_tools(system_prompt, mensaje, max_iter=MAX_ITERACION
                         "content": str(resultado)[:8000],
                     })
 
-        return "[Error] Maximo de iteraciones alcanzado"
     except Exception as e:
         return f"[Error conexion: {str(e)[:80]}]"

@@ -1,4 +1,4 @@
-const API_URL = "https://interference-maintained-mel-beliefs.trycloudflare.com";
+const API_URL = "https://rogers-instructors-register-seconds.trycloudflare.com";
 
 const $ = (id) => document.getElementById(id);
 let agenteActual = "pablo";
