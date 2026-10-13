@@ -2,7 +2,7 @@
 // TutorIA Cuba - PWA
 // ============================================
 
-const API_URL = "https://common-rats-starting-nokia.trycloudflare.com";
+const API_URL = "https://interference-maintained-mel-beliefs.trycloudflare.com";
 
 const $ = (id) => document.getElementById(id);
 
