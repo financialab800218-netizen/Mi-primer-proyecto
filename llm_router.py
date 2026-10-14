@@ -7,7 +7,7 @@ from tools import TOOLS_SCHEMA, ejecutar_herramienta
 
 GROQ_URL = "https://api.groq.com/openai/v1"
 GROQ_MODEL = "openai/gpt-oss-120b"
-MAX_ITER = 3
+MAX_ITER = 6
 
 async def _consultar(proveedor, url, model, api_key, system_prompt, mensaje):
     headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}

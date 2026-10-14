@@ -1,77 +1,78 @@
-• INVENTARIO.md
-• actualizacion-fichas-costos-2026.md
-• analisis-cadena-frio-hielo-acuicultura.md
-• analisis-legal-integrado.md
-• analisis-pablo.md
-• analisis-tecnico-camara-frio.md
-• anexo-14oct2026-fixes.md
-• anexo-aa-analisis-integral-proyecto.md
-• anexo-an-vps-eqvps.md
-• anexo-ao-groq-respaldo.md
-• anexo-ap-integracion-completa.md
-• anexo-ap-supabase-integracion.md
-• anexo-m-mercado-educativo.md
-• anexo-modelo-legal-tutoria.md
-• anexo-n-infraestructura-educativa.md
-• anexo-o-integracion-financialab-tutoria.md
-• anexo-p-estructura-empresa.md
-• anexo-p-v2-estructura-optimizada.md
-• anexo-q-cuerpo-agente-ia.md
-• anexo-r-error-401-resuelto.md
-• anexo-s-bot-telegram.md
-• anexo-t-plan-etapas.md
-• anexo-u-costos-recursos.md
-• anexo-v-regla-seguridad.md
-• automatizacion/analisis-pendientes-automatizacion.md
-• cierre-foro-26sep.md
-• comandos-vps.md
-• detalles-chat-traspaso.md
-• estado-proyecto-2026-10-10.md
-• estado-proyecto-2026-10-11.md
-• estrategia/analisis-local-bejucal-licitacion.md
-• estrategia/dossier-1-hoja-ecosistema.md
-• estrategia/dossier-lobato.md
-• estrategia/estrategia-alianza-biocen.md
-• estrategia/estrategia-asesoria-legal-2026.md
-• estrategia/guion-llamadas-academicas.md
-• estrategia/guion-reunion-biocen.md
-• estrategia/plan-escalado-2026-2027.md
-• estrategia/plan-financiero-consolidado-12-meses.md
-• estrategia/sistema-inteligencia-mercado.md
-• fix-bot-deepseek-2026-10-13.md
-• indice-maestro-autorizaciones.md
-• inventario-equipos-reales-v2.md
-• lecciones/error-red-ethereum-2026.md
-• legales/analisis-decreto-160-mipyme.md
-• legales/analisis-decreto-175-reglamento.md
-• legales/analisis-fiscal-ley-113-mayabeque.md
-• legales/anexo-ad-politica-reincorporacion-profesores.md
-• legales/anexo-ae-operacion-pdl-aquaponica.md
-• legales/anexo-af-fundamento-legal-tutoria-herramienta.md
-• legales/anexo-ag-modelo-consultoria-internacional.md
-• legales/anexo-al-ley-185-tierra-agropecuaria.md
-• legales/anexo-w-central-manuel-fajardo.md
-• legales/decreto-ley-76-2023-cooperativas.md
-• legales/guia-solicitud-usufructo-mipyme.md
-• legales/ley-113-sistema-tributario.md
-• libro-caso-cpa-cana.md
-• libro-fichas-costos.md
-• libro-financialab.md
-• libro-la-route.md
-• libro-n8n-deepseek.md
-• libro-tutoria-lovable.md
-• libro-tutoria-supabase.md
-• maestro-v2.0.md
-• objeto-social-reformulado.md
-• principio-formacion-progresiva.md
-• principio-responsabilidad-legal.md
-• prompt-maestro-agentes.md
-• prompt-maestro-traspaso.md
-• prueba-autopush.md
-• prueba-escritura.md
-• prueba-marta.md
-• resumen-bot.md
-• resumen-estado-2026-10-09.md
-• resumen-fase-a.md
-• resumen-hoy.md
-• test-agente.md
+INVENTARIO.md
+LIBRO-MAESTRO.md
+actualizacion-fichas-costos-2026.md
+analisis-cadena-frio-hielo-acuicultura.md
+analisis-legal-integrado.md
+analisis-pablo.md
+analisis-tecnico-camara-frio.md
+anexo-14oct2026-fixes.md
+anexo-aa-analisis-integral-proyecto.md
+anexo-an-vps-eqvps.md
+anexo-ao-groq-respaldo.md
+anexo-ap-integracion-completa.md
+anexo-ap-supabase-integracion.md
+anexo-m-mercado-educativo.md
+anexo-modelo-legal-tutoria.md
+anexo-n-infraestructura-educativa.md
+anexo-o-integracion-financialab-tutoria.md
+anexo-p-estructura-empresa.md
+anexo-p-v2-estructura-optimizada.md
+anexo-q-cuerpo-agente-ia.md
+anexo-r-error-401-resuelto.md
+anexo-s-bot-telegram.md
+anexo-t-plan-etapas.md
+anexo-u-costos-recursos.md
+anexo-v-regla-seguridad.md
+automatizacion/analisis-pendientes-automatizacion.md
+cierre-foro-26sep.md
+comandos-vps.md
+detalles-chat-traspaso.md
+estado-proyecto-2026-10-10.md
+estado-proyecto-2026-10-11.md
+estrategia/analisis-local-bejucal-licitacion.md
+estrategia/dossier-1-hoja-ecosistema.md
+estrategia/dossier-lobato.md
+estrategia/estrategia-alianza-biocen.md
+estrategia/estrategia-asesoria-legal-2026.md
+estrategia/guion-llamadas-academicas.md
+estrategia/guion-reunion-biocen.md
+estrategia/plan-escalado-2026-2027.md
+estrategia/plan-financiero-consolidado-12-meses.md
+estrategia/sistema-inteligencia-mercado.md
+fix-bot-deepseek-2026-10-13.md
+indice-maestro-autorizaciones.md
+inventario-equipos-reales-v2.md
+lecciones/error-red-ethereum-2026.md
+legales/analisis-decreto-160-mipyme.md
+legales/analisis-decreto-175-reglamento.md
+legales/analisis-fiscal-ley-113-mayabeque.md
+legales/anexo-ad-politica-reincorporacion-profesores.md
+legales/anexo-ae-operacion-pdl-aquaponica.md
+legales/anexo-af-fundamento-legal-tutoria-herramienta.md
+legales/anexo-ag-modelo-consultoria-internacional.md
+legales/anexo-al-ley-185-tierra-agropecuaria.md
+legales/anexo-w-central-manuel-fajardo.md
+legales/decreto-ley-76-2023-cooperativas.md
+legales/guia-solicitud-usufructo-mipyme.md
+legales/ley-113-sistema-tributario.md
+libro-caso-cpa-cana.md
+libro-fichas-costos.md
+libro-financialab.md
+libro-la-route.md
+libro-n8n-deepseek.md
+libro-tutoria-lovable.md
+libro-tutoria-supabase.md
+maestro-v2.0.md
+objeto-social-reformulado.md
+principio-formacion-progresiva.md
+principio-responsabilidad-legal.md
+prompt-maestro-agentes.md
+prompt-maestro-traspaso.md
+prueba-autopush.md
+prueba-escritura.md
+prueba-marta.md
+resumen-bot.md
+resumen-estado-2026-10-09.md
+resumen-fase-a.md
+resumen-hoy.md
+test-agente.md
