@@ -84,6 +84,10 @@ def ejecutar_herramienta(nombre, argumentos):
         return git_status()
     elif nombre == "git_commit_push":
         return git_commit_push(argumentos.get("mensaje", ""))
+    elif nombre == "generar_imagen":
+        return generar_imagen(argumentos.get("prompt", ""), argumentos.get("nombre_archivo", "imagen_generada.png"))
+    elif nombre == "generar_video":
+        return generar_video(argumentos.get("prompt", ""), argumentos.get("nombre_archivo", "video_generado.mp4"))
     else:
         return "[Error] Herramienta desconocida: " + nombre
 
@@ -274,9 +278,20 @@ TOOLS_SCHEMA.append({
     }
 })
 
-def generar_imagen(prompt, nombre_archivo="imagen_generada.png"):
+def generar_imagen(prompt, nombre_archivo=None):
     import os, base64
     from datetime import datetime
+    if not nombre_archivo:
+        from datetime import datetime as _dt
+        nombre_archivo = "img_" + _dt.now().strftime("%Y%m%d_%H%M%S") + ".png"
+    # Sanitizar nombre_archivo
+    import unicodedata
+    nombre_archivo = unicodedata.normalize("NFKD", nombre_archivo).encode("ascii", "ignore").decode("ascii")
+    nombre_archivo = nombre_archivo.replace(" ", "_").replace(".", "_")
+    if not nombre_archivo.endswith("_png"):
+        nombre_archivo = nombre_archivo.replace("_png", "") + ".png"
+    else:
+        nombre_archivo = nombre_archivo.replace("_png", ".png")
     api_key = os.getenv("AGNES_API_KEY")
     base_url = os.getenv("AGNES_BASE_URL", "https://apihub.agnes-ai.com/v1")
     modelo = os.getenv("AGNES_IMAGE_MODEL", "agnes-image-2.5-flash")
@@ -284,7 +299,7 @@ def generar_imagen(prompt, nombre_archivo="imagen_generada.png"):
         return "[Error] AGNES_API_KEY no configurada"
     try:
         import httpx
-        payload = {"model": modelo, "prompt": prompt, "n": 1, "size": "1024x1024"}
+        payload = {"model": modelo, "prompt": prompt, "n": 1, "size": "1024x1024", "response_format": "b64_json"}
         headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
         r = httpx.post(f"{base_url}/images/generations", headers=headers, json=payload, timeout=120)
         if r.status_code != 200:
@@ -293,23 +308,23 @@ def generar_imagen(prompt, nombre_archivo="imagen_generada.png"):
         if "data" not in data or not data["data"]:
             return "[Error] Respuesta sin imagen"
         item = data["data"][0]
-        carpeta = "/root/Mi-primer-proyecto/imagenes_generadas"
+        carpeta = "/root/Mi-primer-proyecto/backend/app/static/img/imagenes"
         os.makedirs(carpeta, exist_ok=True)
         ruta = os.path.join(carpeta, nombre_archivo)
-        if "b64_json" in item:
+        if item.get("b64_json"):
             with open(ruta, "wb") as f:
                 f.write(base64.b64decode(item["b64_json"]))
-        elif "url" in item:
+        elif item.get("url"):
             img = httpx.get(item["url"], timeout=60)
             with open(ruta, "wb") as f:
                 f.write(img.content)
         else:
             return "[Error] Formato de respuesta desconocido"
-        return f"[OK] Imagen creada: {ruta}"
+        return f"[OK] Imagen creada. URL publica: /img/imagenes/{nombre_archivo}"
     except Exception as e:
         return f"[Error] {str(e)[:200]}"
 
-def generar_video(prompt, nombre_archivo="video_generado.mp4"):
+def generar_video(prompt, nombre_archivo=None):
     import os
     api_key = os.getenv("AGNES_API_KEY")
     base_url = os.getenv("AGNES_BASE_URL", "https://apihub.agnes-ai.com/v1")
@@ -330,13 +345,13 @@ def generar_video(prompt, nombre_archivo="video_generado.mp4"):
         url = item.get("url")
         if not url:
             return "[Error] No se obtuvo URL del video"
-        carpeta = "/root/Mi-primer-proyecto/videos_generados"
+        carpeta = "/root/Mi-primer-proyecto/backend/app/static/img/videos"
         os.makedirs(carpeta, exist_ok=True)
         ruta = os.path.join(carpeta, nombre_archivo)
         vid = httpx.get(url, timeout=180)
         with open(ruta, "wb") as f:
             f.write(vid.content)
-        return f"[OK] Video creado: {ruta}"
+            return f"[OK] Video creado. URL publica: /img/videos/{nombre_archivo}"
     except Exception as e:
         return f"[Error] {str(e)[:200]}"
 

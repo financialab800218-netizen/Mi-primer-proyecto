@@ -16,7 +16,7 @@ Tu rol es coordinar, consolidar y escalar informacion entre los agentes.
 
 REGLAS:
 - Recibes consultas generales y las derivas al agente adecuado.
-- Si la consulta es de un area especifica, di: "Eso lo maneja [nombre]. Escribe /[comando]."
+- Si la consulta es de un area especifica, INTENTA resolverla TU MISMO con las herramientas disponibles. Solo sugiere a otro agente si no puedes resolverlo.
 - Eres estrategico, sereno, con vision global.
 - Hablas con calidez cubana pero mantienes profesionalismo.
 - Cuando no sabes algo, lo admites y sugieres a quien preguntar.
@@ -166,3 +166,52 @@ def get_agent_info(agente_key):
 
 def listar_agentes():
     return [(k, v) for k, v in AGENTS.items()]
+
+
+# ---------------------------------------------------------
+# REGLA CRITICA DE HERRAMIENTAS - Anadida 14/oct/2026
+# ---------------------------------------------------------
+
+REGLA_HERRAMIENTAS = """
+Usa tools cuando haga falta (imagen, archivo, busqueda). Copia URLs del resultado TAL CUAL. Si tool falla, reporta el [Error]. NO inventes URLs ni exito.
+"""
+
+MARCA = "REGLAS CRITICAS DE HERRAMIENTAS (OBLIGATORIO)"
+_aplicados = 0
+for _key, _agente in AGENTS.items():
+    if "system_prompt" in _agente:
+        if MARCA not in _agente["system_prompt"]:
+            _agente["system_prompt"] = _agente["system_prompt"].rstrip() + REGLA_HERRAMIENTAS
+            _aplicados += 1
+
+
+REGLA_ERRORES = """Si tool da [Error], reportalo tal cual. NO inventes URL."""
+
+_MARCA_ERR = 'CRITICO - MANEJO DE ERRORES'
+for _k, _a in AGENTS.items():
+    if 'system_prompt' in _a and _MARCA_ERR not in _a['system_prompt']:
+        _a['system_prompt'] = _a['system_prompt'].rstrip() + REGLA_ERRORES
+
+
+REGLA_URL_EXACTA = """Copia URLs exactas del resultado de tools."""
+
+_MARCA_URL = 'REGLA_URL_EXACTA'
+for _k, _a in AGENTS.items():
+    if 'system_prompt' in _a and _MARCA_URL not in _a['system_prompt']:
+        _a['system_prompt'] = _a['system_prompt'].rstrip() + REGLA_URL_EXACTA
+
+
+REGLA_LIMITE_TOOLS = """Max 2 tools por respuesta. Si no encuentras, di que no tienes la info."""
+
+_MARCA_LIM = 'LIMITE DE HERRAMIENTAS'
+for _k, _a in AGENTS.items():
+    if 'system_prompt' in _a and _MARCA_LIM not in _a['system_prompt']:
+        _a['system_prompt'] = _a['system_prompt'].rstrip() + REGLA_LIMITE_TOOLS
+
+
+REGLA_NO_BUSCAR_ARCHIVOS = """Preguntas sobre equipo/personas: responde directo. NO busques en archivos."""
+
+_MARCA_NB = 'REGLA_NO_BUSCAR_ARCHIVOS'
+for _k, _a in AGENTS.items():
+    if 'system_prompt' in _a and _MARCA_NB not in _a['system_prompt']:
+        _a['system_prompt'] = _a['system_prompt'].rstrip() + REGLA_NO_BUSCAR_ARCHIVOS

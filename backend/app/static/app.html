@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0a4d68">
+<title>TutorIA Cuba - Panel</title>
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="app">
+<header class="hero">
+<img src="https://ui-avatars.com/api/?name=TutorIA&background=0a4d68&color=fff&size=80&rounded=true" alt="TutorIA" class="logo">
+<h1 id="saludo">Hola</h1>
+<p id="rol">cargando...</p>
+</header>
+<main class="tabs">
+<div class="menu-opciones">
+<a href="chat.html" class="menu-item">
+<span class="icono">💬</span>
+<span>Hablar con agentes</span>
+</a>
+<a href="#" class="menu-item" data-seccion="cursos">
+<span class="icono">📚</span>
+<span>Mis cursos</span>
+</a>
+<a href="#" class="menu-item" data-seccion="certificados">
+<span class="icono">🎓</span>
+<span>Mis certificados</span>
+</a>
+<a href="#" class="menu-item" data-seccion="pagos">
+<span class="icono">💳</span>
+<span>Suscripcion</span>
+</a>
+<a href="https://t.me/tutoria_cuba_bot" target="_blank" class="menu-item">
+<span class="icono">🤖</span>
+<span>Abrir bot de Telegram</span>
+</a>
+</div>
+<button id="btn-salir" class="btn-invitado">Cerrar sesion</button>
+</main>
+<footer>
+<p>© 2026 TutorIA Cuba</p>
+</footer>
+</div>
+<script>
+const API_URL = "https://goat-varies-agricultural-game.trycloudflare.com";
+
+document.addEventListener("DOMContentLoaded", async () => {
+  const token = localStorage.getItem("token");
+  const invitado = localStorage.getItem("invitado");
+  const usuario = JSON.parse(localStorage.getItem("usuario") || "null");
+
+  if (!token && !invitado) {
+    window.location.href = "index.html";
+    return;
+  }
+
+  if (invitado && !token) {
+    document.getElementById("saludo").textContent = "Hola, invitado";
+    document.getElementById("rol").textContent = "Modo lectura";
+  } else if (usuario) {
+    document.getElementById("saludo").textContent = "Hola, " + usuario.nombre;
+    document.getElementById("rol").textContent = usuario.rol || "alumno";
+  }
+
+  document.getElementById("btn-salir").addEventListener("click", () => {
+    localStorage.clear();
+    window.location.href = "index.html";
+  });
+});
+</script>
+</body>
+</html>

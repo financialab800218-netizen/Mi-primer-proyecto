@@ -28,3 +28,16 @@ app.include_router(tcp.router)
 app.include_router(modulos.router)
 app.include_router(auth.router)
 app.include_router(agentes.router)
+
+# ============================================
+# Servir la PWA (archivos estáticos)
+# ============================================
+from fastapi.staticfiles import StaticFiles
+import os
+
+STATIC_DIR = os.path.join(os.path.dirname(__file__), "static")
+if os.path.exists(STATIC_DIR):
+    app.mount("/", StaticFiles(directory=STATIC_DIR, html=True), name="static")
+    print(f"[static] Sirviendo PWA desde {STATIC_DIR}")
+else:
+    print(f"[static] WARN: no existe {STATIC_DIR}")

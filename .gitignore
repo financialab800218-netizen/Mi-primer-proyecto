@@ -9,3 +9,16 @@ env/
 memoria.db
 *.db
 *.swp
+
+# Backups y archivos temporales
+backups/
+*.bak
+*.bak-*
+*.save
+*.save.*
+*.log
+
+# Contenido multimedia generado por usuarios
+backend/app/static/img/imagenes/
+backend/app/static/img/videos/
+!backend/app/static/img/.gitkeep
