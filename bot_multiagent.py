@@ -13,7 +13,14 @@ import httpx
 from dotenv import load_dotenv
 
 from telegram import Update
+import supabase_helper as sb
+from onboarding import (
+    menu_agentes_inline,
+    es_usuario_nuevo, registrar_usuario, enviar_bienvenida,
+    handle_onboarding_callback, marcar_completado,
+)
 from telegram.ext import (
+    CallbackQueryHandler,
     Application,
     CommandHandler,
     MessageHandler,
@@ -81,25 +88,35 @@ async def consultar_llm(system_prompt, mensaje):
 
 
 async def cmd_start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    user_id = update.effective_user.id
+    user = update.effective_user
+    user_id = user.id
     user_agents[user_id] = "pablo"
-    estado_ia = "ACTIVA" if tiene_llm() else "PENDIENTE (fondear $5)"
-    mensaje = (
-        "Hola Yosbel. Bienvenido al Ecosistema Mayabeque.\n\n"
-        f"IA DeepSeek: {estado_ia}\n\n"
-        "Soy Pablo, Director Adjunto.\n"
-        "Agentes disponibles:\n"
-    )
-    for key, agente in listar_agentes():
-        mensaje += f"  /{key} - {agente['cargo']}\n"
-    mensaje += (
-        "\nOtros comandos:\n"
-        "  /ayuda - Ver esta lista\n"
-        "  /quien - Con quien hablo\n"
-        "  /salir - Volver a Pablo\n"
-    )
-    await update.message.reply_text(mensaje)
 
+    if es_usuario_nuevo(user_id):
+        registrar_usuario(user_id, user.first_name or "amigo", user.username)
+        await enviar_bienvenida(update)
+        return
+
+    estado_ia = "ACTIVA" if tiene_llm() else "PENDIENTE"
+    nombre = user.first_name or "amigo"
+    lineas = [
+        "Hola " + nombre + ". Bienvenido al Ecosistema Mayabeque.",
+        "",
+        "IA: " + estado_ia,
+        "",
+        "Soy Pablo, Director Adjunto.",
+        "Agentes disponibles:",
+    ]
+    for key, agente in listar_agentes():
+        lineas.append("  /" + key + " - " + agente["cargo"])
+    lineas.extend([
+        "",
+        "Otros comandos:",
+        "  /ayuda  - Ver esta lista",
+        "  /quien  - Con quien hablo",
+        "  /salir  - Volver a Pablo",
+    ])
+    await update.message.reply_text(chr(10).join(lineas), reply_markup=menu_agentes_inline())
 
 async def cmd_ayuda(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await cmd_start(update, context)
@@ -183,6 +200,7 @@ def crear_app():
             app.add_handler(CommandHandler(cmd.replace("/", ""), handler))
 
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
+    app.add_handler(CallbackQueryHandler(handle_onboarding_callback, pattern="^onb:"))
     return app
 
 
