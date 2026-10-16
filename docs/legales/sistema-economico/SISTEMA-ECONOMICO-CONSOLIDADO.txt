@@ -1,0 +1,367 @@
+nano /root/Mi-primer-proyecto/docs/legales/sistema-economico/SISTEMA-ECONOMICO-CONSOLIDADO.txt
+================================================================
+SISTEMA ECONOMICO CONSOLIDADO - TUTORIA CUBA
+================================================================
+Version: 1.0
+Fecha: 16/octubre/2026
+Autor: Yosbel Collazo Avila + Socio IA
+Estado: Oficial - Documento de referencia
+Compliance: Decreto 160/2026 - 176 Transformaciones - Ley 113
+================================================================
+
+
+================================================================
+SECCION 1 - MODELO DOBLE PUERTA
+================================================================
+
+Puerta A - Autoservicio con IA
+- Protagonista: Estudiante + IA
+- Precio: 150-500 CUP/mes
+- Sin profesor humano
+
+Puerta B - Marketplace con TCP
+- Protagonista: Estudiante + Profesor TCP
+- Precio: Bonos de 40-150 CUP por curso
+- Con profesor humano
+
+
+================================================================
+SECCION 2 - PRECIOS DE BONOS POR NIVEL
+================================================================
+
+Primaria          - Bono 40 CUP  - Refuerzo 20 CUP
+Secundaria        - Bono 60 CUP  - Refuerzo 30 CUP
+Preuniversitario  - Bono 100 CUP - Refuerzo 50 CUP
+Universidad       - Bono 150 CUP - Refuerzo 75 CUP
+
+
+================================================================
+SECCION 3 - CATEGORIAS DE PROFESOR TCP
+================================================================
+
+Categoria   - % TCP - % Plataforma - Bono base    - Requisito
+Bronce      - 30%   - 70%          - 490 CUP      - 5-10 estudiantes
+Plata       - 40%   - 60%          - 2,290 CUP    - 20-30 estudiantes
+Oro         - 50%   - 50%          - 4,585 CUP    - 50-70 estudiantes
+Platino     - 55%   - 45%          - 5,320 CUP    - 80-100 estudiantes
+Embajador   - 60%   - 40%          - 8,585 CUP    - 120+ estudiantes
+
+Reglas:
+- El % crece con la categoria. Nunca decrece.
+- Bono base garantizado cada mes.
+- No es salario ni nomina. Es contrato de licencia.
+
+Distribucion del % plataforma:
+- 50% operativo (VPS, IA, soporte)
+- 30% fondo de crecimiento
+- 20% reserva
+
+
+================================================================
+SECCION 4 - FORMULA B1+B2+B3+B4
+================================================================
+
+Compensacion TCP mensual =
+    B1 (estudiantes x factor x % categoria)
+  + B2 (contenido x calidad + reutilizacion x % categoria)
+  + B3 (mejoras + dominios + retenciones)
+  + B4 (validaciones x valor)
+
+Con minimo garantizado por categoria.
+
+
+B1 - BONO POR ESTUDIANTES
+B1 = Estudiantes x Factor nivel x Factor uso x % categoria
+
+Factores por nivel:
+Primaria          - 15 CUP
+Secundaria        - 25 CUP
+Preuniversitario  - 40 CUP
+Universidad       - 55 CUP
+
+
+B2 - BONO POR CONTENIDO
+B2 = (Contenido x Calidad) + (Reutilizacion x % categoria)
+
+Calidad:
+Basica      - 40 CUP
+Buena       - 60 CUP
+Excelente   - 85 CUP
+
+Reutilizacion:
+1-5 veces     - 10 CUP
+6-15 veces    - 15 CUP
+16+ veces     - 20 CUP
+
+
+B3 - BONO POR MEJORAS Y DOMINIO
+B3 = (Mejoras x 50) + (Dominios x 30) + (Retenciones x 20)
+
+
+B4 - BONO POR VALIDACION IA
+B4 = Validaciones x valor
+
+Escala:
+Basica    - 50 CUP
+Media     - 100 CUP
+Experta   - 150 CUP
+
+
+================================================================
+SECCION 5 - SISTEMA DE BILLETERA
+================================================================
+
+ALUMNO:
+- Recarga via Transfermovil, EnZona, USDT (TRON)
+- Saldo maximo: 5,000 CUP
+- Recarga minima: 100 CUP
+- Bonos vencen a los 90 dias
+
+PROFESOR TCP:
+- Acumula ingresos automaticamente
+- Sin minimo para retiro
+- Ingresos disponibles el dia 6 de cada mes
+- Historial completo de movimientos
+
+
+================================================================
+SECCION 6 - SISTEMA DE RETIROS (TCP)
+================================================================
+
+Monto:              Libre eleccion del TCP segun necesidad y disponibilidad
+Plazo:              7 dias habiles
+Metodos:            Transfermovil, EnZona, USDT (TRON)
+Comision:           2% (cubre pasarela de pago)
+Ventana solicitud:  Dias 1-5 de cada mes
+Procesamiento:      Dias 6-10 del mes
+
+
+================================================================
+SECCION 7 - CUOTAS DE ALMACENAMIENTO
+================================================================
+
+Alumno:         100 MB
+Profesor TCP:   1 GB
+Institucion:    10 GB
+Admin:          Ilimitado
+
+Nomenclatura obligatoria (por Decreto 160):
+PROHIBIDO: Biblioteca, Archivo, Centro de informacion, Museo
+SEGURO:    Repositorio digital, Espacio personal, Registro
+
+
+================================================================
+SECCION 8 - SISTEMA DE REEMBOLSOS
+================================================================
+
+Curso no iniciado:                100% reembolso
+Curso iniciado <30%:              50% reembolso
+Curso iniciado >30%:              No reembolsable
+Curso falla por culpa del TCP:    100% reembolso
+Curso falla por culpa del alumno: No reembolsable
+
+ATENCION - Limitaciones cuando ya se pago al TCP:
+
+1. Si el TCP acepta devolucion voluntaria:
+   Se ejecuta reembolso normal.
+
+2. Si el TCP no acepta:
+   Se retiene del proximo ingreso del TCP.
+
+3. Si no hay ingresos futuros:
+   La plataforma absorbe el costo y marca incidente.
+
+4. Poliza detallada en contrato de licencia TCP.
+
+
+================================================================
+SECCION 9 - REPARTO CON INSTITUCIONES
+================================================================
+
+- Reparto 50/50 con instituciones educativas aliadas
+- Solo aplica cuando hay convenio firmado
+- Se calcula sobre el margen neto (despues de pagar TCP)
+- Aplicable a: cursos institucionales, capacitaciones formales, asesorias
+
+Instituciones aliadas actuales:
+- Escuela de Oficio - Quivican
+- Politecnico Agricola - Quivican
+- Sede Universitaria - Quivican
+- Centro Nacional Capacitacion AZCUBA 1
+- Centro Nacional Capacitacion AZCUBA 2
+
+
+================================================================
+SECCION 10 - COMISIONES POR INTEGRACION
+================================================================
+
+Financialab:
+- Comision: 10-20% por derivacion de clientes
+- Aplica sobre cursos/asesorias gestionados por Financialab
+
+
+================================================================
+SECCION 11 - FORMACION PROGRESIVA DE AGENTES IA
+================================================================
+
+Base legal: Cumplimiento Ley 176, Decreto 160/2026, Decreto-Ley 114
+
+REGLA DE ORO:
+"Un agente N0 no puede hacer nada sin supervision."
+
+NIVELES:
+N0 - Pre-aprendiz   - Solo observar y aprender
+N1 - Aprendiz       - Responder en chat interno con supervision
+N2 - Auxiliar       - Redactar borradores para revision
+N3 - Profesional    - Responder a clientes con auditoria
+N4 - Senior         - Actuar en rutinas con revision periodica
+N5 - Doctor         - Autonomia plena con auditoria
+
+REQUISITOS POR SALTO:
+1. Formacion completa
+2. Examen teorico
+3. Examen practico
+4. Aval del asesor humano
+5. Analisis de factibilidad
+6. Analisis de impacto
+7. Definicion de limites
+8. Aprobacion de Yosbel
+
+LOS 10 LIMITES PERMANENTES NO NEGOCIABLES:
+1.  Nunca firma contratos
+2.  Nunca hace compromisos economicos
+3.  Nunca da datos personales de terceros
+4.  Nunca viola Anexo V
+5.  Nunca actua sin trazabilidad
+6.  Nunca opera fuera del marco legal
+7.  Nunca publica en nombre de Yosbel sin su firma
+8.  Nunca toma decisiones estrategicas
+9.  Nunca accede a credenciales sensibles
+10. Nunca actua autonomamente sin auditoria
+
+
+================================================================
+SECCION 12 - MARCO LEGAL
+================================================================
+
+OBJETO SOCIAL:
+Programacion de software (MIPYME "Tutoria Cuba")
+
+ACTIVIDADES PERMITIDAS (Decreto 160/2026):
+- Programacion software (punto 46)
+- Alojar contenido
+- Cobrar suscripciones
+- Usar IA
+- Certificados digitales internos
+- Bonos
+- Licencias
+- Centros de llamadas (punto 52)
+
+ACTIVIDADES PROHIBIDAS:
+- Ensenanza formal con titulacion
+- Academias
+- Titulos oficiales
+- Mipyme dando clases
+- Mipyme contratando profesores
+- Editoriales
+- Bibliotecas digitales
+- Agencias de empleo
+- Asociaciones profesionales
+
+NARRATIVA OFICIAL PARA ONAT:
+"Tutoria Cuba es Mipyme de programacion de software.
+Aloja contenido de TCP.
+No ensena ni contrata profesores.
+Usuarios pagan su suscripcion tecnologica."
+
+3 CONTRATOS CLAVE:
+1. Licencia de contenido (TCP a Mipyme)
+2. Servicios de plataforma (TCP a Mipyme)
+3. Convenio Institucional (Mipyme a Institucion)
+
+
+================================================================
+SECCION 13 - PROYECCION FINANCIERA 5 ANOS
+================================================================
+
+Ano 1: 4,200,000 CUP      ($3,500 USD)    - Margen $1,258 USD
+Ano 2: 17,850,000 CUP     ($14,875 USD)   - Margen $6,729 USD
+Ano 3: 53,550,000 CUP     ($44,625 USD)   - Margen $21,750 USD
+Ano 4: 116,375,000 CUP    ($96,979 USD)   - Margen $48,371 USD
+Ano 5: 217,000,000 CUP    ($180,833 USD)  - Margen $90,708 USD
+Total:                    $340,962 USD    - Margen $168,816 USD
+
+ROI: 1,125x
+Payback: menos de 4 meses
+TIR: mas de 450%
+
+
+================================================================
+SECCION 14 - NOMENCLATURA OBLIGATORIA
+================================================================
+
+TERMINOS PROHIBIDOS (Decreto 160/2026, punto 71):
+- Biblioteca (fisica o digital)
+- Archivo (como sustantivo legal)
+- Centro de informacion
+- Museo
+
+TERMINOS SEGUROS:
+Biblioteca            ->  Repositorio digital
+Archivo (legal)       ->  Registro digital
+Centro de informacion ->  Espacio de datos
+Museo                 ->  Galeria digital
+
+APLICACION:
+Almacenamiento de alumno    ->  Espacio personal
+Almacenamiento de profesor  ->  Espacio del autor
+Almacenamiento publico      ->  Repositorio publico
+Sistema de archivos         ->  Gestor de datos
+
+EXCEPCIONES:
+- En codigo: usar nombres tecnicos estandar
+- En referencias legales: citar termino original
+
+
+================================================================
+SECCION 15 - FLUJOS FINANCIEROS
+================================================================
+
+FLUJO 1 - ALUMNO RECARGA:
+Alumno -> PWA -> Recargar -> Metodo -> Pago -> Confirmacion -> Saldo acreditado
+
+FLUJO 2 - ALUMNO COMPRA CURSO:
+Alumno -> Catalogo -> Inscribirse -> Descuento de billetera ->
+Reparto (TCP% + Plataforma%) -> Registro en movimientos
+
+FLUJO 3 - TCP COBRA:
+Acumulacion diaria -> Cierre mensual (dia 5) ->
+Calculo B1+B2+B3+B4 -> Bono base garantizado ->
+Disponible desde dia 6
+
+FLUJO 4 - TCP RETIRA:
+Solicitud (dia 1-5) -> Validacion -> Procesamiento (dia 6-10) ->
+Transferencia a tarjeta/USDT -> Confirmacion
+
+
+================================================================
+SECCION 16 - PENDIENTES
+================================================================
+
+[ ] Politica detallada de reembolso (documento separado)
+[ ] Contrato tipo de licencia TCP
+[ ] Contrato tipo con instituciones
+[ ] Sistema de facturacion electronica
+[ ] Implementacion del IVA
+[ ] Registro en ONAT del modelo
+[ ] Sistema de auditoria financiera
+[ ] Reportes fiscales
+
+
+================================================================
+FIN DEL DOCUMENTO - SISTEMA ECONOMICO CONSOLIDADO
+================================================================
+Este documento es la fuente unica de verdad para todo lo
+relacionado con el sistema economico de Tutoria Cuba.
+================================================================
+
