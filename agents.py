@@ -215,3 +215,22 @@ _MARCA_NB = 'REGLA_NO_BUSCAR_ARCHIVOS'
 for _k, _a in AGENTS.items():
     if 'system_prompt' in _a and _MARCA_NB not in _a['system_prompt']:
         _a['system_prompt'] = _a['system_prompt'].rstrip() + REGLA_NO_BUSCAR_ARCHIVOS
+
+
+REGLA_URL_PLANA = """
+
+Cuando una herramienta devuelva una URL de imagen o video, COPIA la URL
+TAL CUAL en tu respuesta. NO uses formato markdown [texto](url).
+NO agregues tildes. NO cambies el nombre del archivo.
+
+BIEN: https://lens-portside-masses.ngrok-free.dev/img/imagenes/ejemplo.png
+MAL:  [Ver imagen](/img/imagenes/ejemplo.png)
+MAL:  [Ver imagen](https://lens-portside-masses.ngrok-free.dev/img/imagenes/ejemplo.png)
+
+Solo pega la URL pelada. Telegram la convertira en imagen automaticamente.
+"""
+
+_MARCA_UP = 'REGLA_URL_PLANA'
+for _k, _a in AGENTS.items():
+    if 'system_prompt' in _a and _MARCA_UP not in _a['system_prompt']:
+        _a['system_prompt'] = _a['system_prompt'].rstrip() + REGLA_URL_PLANA

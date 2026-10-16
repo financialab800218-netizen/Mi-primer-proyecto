@@ -58,7 +58,7 @@ async def handle_onboarding_callback(update, context):
         return
 
     # Cambio a un agente especifico
-    from bot_multiagent import user_agents
+    from estado import user_agents
     user_agents[query.from_user.id] = accion
     marcar_completado(query.from_user.id)
 

@@ -14,10 +14,17 @@ const NOMBRES = {
   ruben:   { nombre: "Ruben",   cargo: "Jefe de Mantenimiento",  emoji: "R" },
 };
 
+function renderizarConImagenes(texto) {
+  const regex = /(https:\/\/[^\s<>"]+\.(?:png|jpg|jpeg|gif|webp))/gi;
+  return String(texto).replace(regex, function(url) {
+    return '<img src="' + url + '" alt="Imagen generada" style="max-width:100%;border-radius:8px;margin-top:8px;display:block;">';
+  });
+}
+
 function agregarBurbuja(texto, tipo) {
   const burbuja = document.createElement("div");
   burbuja.className = "mensaje-burbuja " + tipo;
-  burbuja.textContent = texto;
+  burbuja.innerHTML = renderizarConImagenes(texto);
   $("chat-mensajes").appendChild(burbuja);
   $("chat-mensajes").scrollTop = $("chat-mensajes").scrollHeight;
   return burbuja;

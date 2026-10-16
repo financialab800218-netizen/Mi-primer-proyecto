@@ -27,11 +27,11 @@ async def _consultar(proveedor, url, model, api_key, system_prompt, mensaje):
                 r = await client.post(f"{url}/chat/completions", headers=headers, json=payload)
                 if r.status_code != 200:
                     print(f"[error-status/{proveedor}] HTTP {r.status_code}: {r.text[:200]}")
-                    return None
+                    return "[No pude procesar tu solicitud. Intenta con una pregunta mas especifica.]"
                 data = r.json()
                 if "choices" not in data or not data.get("choices"):
                     print(f"[error-choices/{proveedor}] Sin choices: {str(data)[:200]}")
-                    return None
+                    return "[No pude procesar tu solicitud. Intenta con una pregunta mas especifica.]"
                 msg = data["choices"][0]["message"]
                 tool_calls = msg.get("tool_calls") or []
                 if not tool_calls:
@@ -53,7 +53,7 @@ async def _consultar(proveedor, url, model, api_key, system_prompt, mensaje):
                     })
     except Exception as e:
         print(f"[error/{proveedor}] {str(e)[:80]}")
-        return None
+        return "[No pude procesar tu solicitud. Intenta con una pregunta mas especifica.]"
 
 async def consultar_llm_router(system_prompt, mensaje):
     # Intento 1: NVIDIA (principal)

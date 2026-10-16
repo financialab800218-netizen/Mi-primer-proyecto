@@ -48,7 +48,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 # Estado: {user_id: "ernesto"}
-user_agents = {}
+from estado import user_agents
 
 
 def tiene_llm():

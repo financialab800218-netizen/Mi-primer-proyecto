@@ -320,7 +320,7 @@ def generar_imagen(prompt, nombre_archivo=None):
                 f.write(img.content)
         else:
             return "[Error] Formato de respuesta desconocido"
-        return f"[OK] Imagen creada. URL publica: /img/imagenes/{nombre_archivo}"
+        return f"[OK] Imagen creada. URL publica: https://lens-portside-masses.ngrok-free.dev/img/imagenes/{nombre_archivo}"
     except Exception as e:
         return f"[Error] {str(e)[:200]}"
 
