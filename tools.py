@@ -303,6 +303,8 @@ def generar_imagen(prompt, nombre_archivo=None):
         headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
         r = httpx.post(f"{base_url}/images/generations", headers=headers, json=payload, timeout=120)
         if r.status_code != 200:
+            if r.status_code == 429:
+                return "[Error] Limite de generacion de video alcanzado. Intenta mas tarde."
             return f"[Error] Agnes respondio {r.status_code}: {r.text[:200]}"
         data = r.json()
         if "data" not in data or not data["data"]:
