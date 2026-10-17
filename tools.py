@@ -327,35 +327,10 @@ def generar_imagen(prompt, nombre_archivo=None):
         return f"[Error] {str(e)[:200]}"
 
 def generar_video(prompt, nombre_archivo=None):
-    import os
-    api_key = os.getenv("AGNES_API_KEY")
-    base_url = os.getenv("AGNES_BASE_URL", "https://apihub.agnes-ai.com/v1")
-    modelo = os.getenv("AGNES_VIDEO_MODEL", "agnes-video-2.5-flash")
-    if not api_key:
-        return "[Error] AGNES_API_KEY no configurada"
-    try:
-        import httpx
-        payload = {"model": modelo, "prompt": prompt, "mode": "t2v"}
-        headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
-        r = httpx.post(f"{base_url}/videos", headers=headers, json=payload, timeout=300)
-        if r.status_code != 200:
-            return f"[Error] Agnes respondio {r.status_code}: {r.text[:200]}"
-        data = r.json()
-        if "data" not in data or not data["data"]:
-            return "[Error] Respuesta sin video"
-        item = data["data"][0]
-        url = item.get("url")
-        if not url:
-            return "[Error] No se obtuvo URL del video"
-        carpeta = "/root/Mi-primer-proyecto/backend/app/static/img/videos"
-        os.makedirs(carpeta, exist_ok=True)
-        ruta = os.path.join(carpeta, nombre_archivo)
-        vid = httpx.get(url, timeout=180)
-        with open(ruta, "wb") as f:
-            f.write(vid.content)
-            return f"[OK] Video creado. URL publica: /img/videos/{nombre_archivo}"
-    except Exception as e:
-        return f"[Error] {str(e)[:200]}"
+    """Devuelve un menu de opciones para video. El bot lo intercepta."""
+    return f"[MENU_VIDEO]{prompt}"
+
+
 
 TOOLS_SCHEMA.append({
     "type": "function",
