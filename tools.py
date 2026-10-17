@@ -333,9 +333,9 @@ def generar_video(prompt, nombre_archivo=None):
         return "[Error] AGNES_API_KEY no configurada"
     try:
         import httpx
-        payload = {"model": modelo, "prompt": prompt}
+        payload = {"model": modelo, "prompt": prompt, "mode": "t2v"}
         headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
-        r = httpx.post(f"{base_url}/videos/generations", headers=headers, json=payload, timeout=300)
+        r = httpx.post(f"{base_url}/videos", headers=headers, json=payload, timeout=300)
         if r.status_code != 200:
             return f"[Error] Agnes respondio {r.status_code}: {r.text[:200]}"
         data = r.json()
