@@ -61,7 +61,7 @@ Plataforma educativa cubana modular. 3 pilares:
 
 ## 💰 MODELO DE NEGOCIO
 
-- Suscripciones: 500 CUP/mes por alumno
+- Suscripciones: Modelo de Bonos (40-150 CUP) y Bono Base 100 CUP (Ver SISTEMA-ECONOMICO-CONSOLIDADO.txt)
 - Comisiones TCP: 10-20%
 - Cursos premium: 500-1500 CUP
 - Consultoría: 500-2000 CUP

@@ -19,6 +19,7 @@ from onboarding import (
     es_usuario_nuevo, registrar_usuario, enviar_bienvenida,
     handle_onboarding_callback, marcar_completado,
 )
+from video_handler import enviar_respuesta_inteligente, handle_video_callback
 from telegram.ext import (
     CallbackQueryHandler,
     Application,
@@ -172,7 +173,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if tiene_llm():
         respuesta = await consultar_llm_router(agente["system_prompt"], mensaje)
         firma = f"\n\n- {agente['nombre']}, {agente['cargo']}"
-        await update.message.reply_text((respuesta or "[Sin respuesta]") + firma)
+        await enviar_respuesta_inteligente(update, respuesta, firma, update.effective_user.id)
     else:
         await update.message.reply_text(
             f"Recibi tu mensaje: {mensaje}\n\n"
@@ -201,6 +202,8 @@ def crear_app():
 
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
     app.add_handler(CallbackQueryHandler(handle_onboarding_callback, pattern="^onb:"))
+    app.add_handler(CallbackQueryHandler(handle_video_callback, pattern="^vid_"))
+
     return app
 
 

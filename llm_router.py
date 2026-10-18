@@ -45,6 +45,9 @@ async def _consultar(proveedor, url, model, api_key, system_prompt, mensaje):
                         args = {}
                     print(f"[tool/{proveedor}] {nombre} {args}")
                     resultado = ejecutar_herramienta(nombre, args)
+                    if isinstance(resultado, str) and resultado.startswith("[MENU_VIDEO]"):
+                        return resultado
+
 
                     messages.append({
                         "role": "tool",
