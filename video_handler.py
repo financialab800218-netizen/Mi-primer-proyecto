@@ -1,12 +1,12 @@
-"""Maneja la logica de video con menu de opciones."""
-
+"""Maneja la logica de video con menu de opciones y worker asincrono."""
+import asyncio
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
+from estado import videos_pendientes
 
 async def enviar_respuesta_inteligente(update, respuesta, firma, user_id):
     """Envia la respuesta normal o el menu de video segun corresponda."""
     if respuesta and "[MENU_VIDEO]" in respuesta:
         prompt_video = respuesta.replace("[MENU_VIDEO]", "").strip()
-        from estado import videos_pendientes
         videos_pendientes[user_id] = prompt_video
         
         menu = InlineKeyboardMarkup([
@@ -25,13 +25,11 @@ async def enviar_respuesta_inteligente(update, respuesta, firma, user_id):
     else:
         await update.message.reply_text((respuesta or "[Sin respuesta]") + firma)
 
-
 async def handle_video_callback(update, context):
     """Maneja los botones de video."""
     query = update.callback_query
     await query.answer()
     user_id = query.from_user.id
-    from estado import videos_pendientes
     
     if query.data == "vid_cancel":
         videos_pendientes.pop(user_id, None)
@@ -44,18 +42,31 @@ async def handle_video_callback(update, context):
         return
     
     if query.data == "vid_gratis":
-        await query.edit_message_text(
-            "Video en cola (gratis).\n\n"
-            "Demora estimada: 5-10 minutos.\n"
-            "Te avisare aqui cuando este listo.\n\n"
-            "(Funcion de cola en desarrollo)"
-        )
+        await query.edit_message_text("🐢 Video en cola (gratis).\n\nDemora estimada: 5-10 minutos.\nTe avisare por aqui cuando este listo. Puedes seguir chateando mientras tanto.")
         videos_pendientes.pop(user_id, None)
+        # Lanzamos el worker en segundo plano
+        context.application.create_task(generar_video_bg(update, context, prompt, es_premium=False))
     
     elif query.data == "vid_pago":
-        await query.edit_message_text(
-            "Video premium solicitado.\n\n"
-            "Se descontaran 200 CUP de tu billetera.\n\n"
-            "(Funcion de pago en desarrollo)"
-        )
+        await query.edit_message_text("🐇 Video premium solicitado.\n\nSe descontaran 200 CUP.\nGenerando en alta calidad...")
         videos_pendientes.pop(user_id, None)
+        # Lanzamos el worker en segundo plano
+        context.application.create_task(generar_video_bg(update, context, prompt, es_premium=True))
+
+async def generar_video_bg(update, context, prompt, es_premium):
+    """Worker asincrono que genera el video sin bloquear el chat."""
+    chat_id = update.callback_query.message.chat_id
+    
+    # --- AQUI IRA LA LLAMADA REAL A AGNES EN EL FUTURO ---
+    # Por ahora, simulamos el tiempo de espera para probar la asincronia.
+    # El video gratuito tarda mas (15s) que el premium (5s) en esta simulacion.
+    await asyncio.sleep(5 if es_premium else 15)
+    
+    try:
+        # En el futuro, aqui usaremos: await context.bot.send_video(chat_id=chat_id, video=open(ruta, 'rb'))
+        await context.bot.send_message(
+            chat_id=chat_id,
+            text=f"✅ [SIMULACION DE WORKER] Tu video {'Premium' if es_premium else 'Gratis'} esta listo.\n\nPrompt: {prompt}\n\n(El proceso asincrono funciono sin bloquear el bot)."
+        )
+    except Exception as e:
+        await context.bot.send_message(chat_id=chat_id, text=f"Error en el worker: {e}")
