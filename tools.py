@@ -7,6 +7,8 @@ MAX_FILE_SIZE = 50000
 MAX_RESULTS = 50
 EXTENSIONES_TEXTO = ['.md', '.py', '.txt', '.json', '.env', '.yaml', '.yml']
 
+TOOLS_SCHEMA = []
+
 def _validar_ruta(ruta_relativa):
     ruta_abs = (SANDBOX_ROOT / ruta_relativa).resolve()
     if not str(ruta_abs).startswith(str(SANDBOX_ROOT)):
@@ -70,6 +72,20 @@ def buscar_texto(patron, carpeta="docs"):
     except Exception as e:
         return "[Error] " + str(e)
 
+
+TOOLS_SCHEMA.append({
+    "type": "function",
+    "function": {
+        "name": "generar_excel_contabilidad",
+        "description": "Genera un archivo Excel con todos los asientos contables y devuelve el enlace de descarga.",
+        "parameters": {
+            "type": "object",
+            "properties": {}
+        }
+    }
+})
+
+
 def ejecutar_herramienta(nombre, argumentos):
     if nombre == "leer_archivo":
         return leer_archivo(argumentos.get("ruta", ""))
@@ -99,8 +115,12 @@ def ejecutar_herramienta(nombre, argumentos):
     elif nombre == "consultar_saldo":
         from contabilidad import obtener_saldo_cuenta
         return obtener_saldo_cuenta(argumentos.get("codigo_cuenta"))
+    elif nombre == "generar_excel_contabilidad":
+        from documentos import generar_excel_asientos
+        return generar_excel_asientos()
     else:
         return f"[Error] Herramienta desconocida: {nombre}"
+
 
 TOOLS_SCHEMA = [
     {
@@ -420,6 +440,18 @@ TOOLS_SCHEMA.append({
                 "codigo_cuenta": {"type": "string", "description": "Codigo de la cuenta (ej: 110, 900)"}
             },
             "required": ["codigo_cuenta"]
+        }
+    }
+})
+
+TOOLS_SCHEMA.append({
+    "type": "function",
+    "function": {
+        "name": "generar_excel_contabilidad",
+        "description": "Genera un archivo Excel con todos los asientos contables y devuelve el enlace de descarga.",
+        "parameters": {
+            "type": "object",
+            "properties": {}
         }
     }
 })
