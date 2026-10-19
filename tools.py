@@ -96,16 +96,11 @@ def ejecutar_herramienta(nombre, argumentos):
             fecha_inicio=argumentos.get("fecha_inicio"),
             fecha_fin=argumentos.get("fecha_fin")
         )
-    elif nombre == "git_status":
-        return git_status()
-    elif nombre == "git_commit_push":
-        return git_commit_push(argumentos.get("mensaje", ""))
-    elif nombre == "generar_imagen":
-        return generar_imagen(argumentos.get("prompt", ""), argumentos.get("nombre_archivo", "imagen_generada.png"))
-    elif nombre == "generar_video":
-        return generar_video(argumentos.get("prompt", ""), argumentos.get("nombre_archivo", "video_generado.mp4"))
+    elif nombre == "consultar_saldo":
+        from contabilidad import obtener_saldo_cuenta
+        return obtener_saldo_cuenta(argumentos.get("codigo_cuenta"))
     else:
-        return "[Error] Herramienta desconocida: " + nombre
+        return f"[Error] Herramienta desconocida: {nombre}"
 
 TOOLS_SCHEMA = [
     {
@@ -410,6 +405,21 @@ TOOLS_SCHEMA.append({
                 "fecha_fin": {"type": "string", "description": "Fecha fin YYYY-MM-DD"}
             },
             "required": ["fecha_inicio", "fecha_fin"]
+        }
+    }
+})
+
+TOOLS_SCHEMA.append({
+    "type": "function",
+    "function": {
+        "name": "consultar_saldo",
+        "description": "Consulta el saldo actual de una cuenta contable (ej: 110 para banco).",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "codigo_cuenta": {"type": "string", "description": "Codigo de la cuenta (ej: 110, 900)"}
+            },
+            "required": ["codigo_cuenta"]
         }
     }
 })

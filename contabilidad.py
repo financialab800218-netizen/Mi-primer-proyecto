@@ -68,3 +68,21 @@ def obtener_balance_general():
 """
     except Exception as e:
         return f"Error al calcular balance: {str(e)}"
+
+def obtener_saldo_cuenta(codigo_cuenta: str):
+    """Calcula el saldo real de una cuenta (Debitos - Creditos)."""
+    if not supabase:
+        return "Error: Supabase no configurado."
+    try:
+        # Sumar debitos
+        debitos = supabase.table("asientos_contables").select("monto").eq("cuenta_debito", codigo_cuenta).execute()
+        total_debito = sum(item["monto"] for item in debitos.data)
+        
+        # Sumar creditos
+        creditos = supabase.table("asientos_contables").select("monto").eq("cuenta_credito", codigo_cuenta).execute()
+        total_credito = sum(item["monto"] for item in creditos.data)
+        
+        saldo = total_debito - total_credito
+        return f"El saldo de la cuenta {codigo_cuenta} es: {saldo:,.2f} CUP."
+    except Exception as e:
+        return f"Error al consultar saldo: {str(e)}"
