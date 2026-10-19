@@ -1,3 +1,7 @@
+import os
+from dotenv import load_dotenv
+load_dotenv("/root/Mi-primer-proyecto/.env")
+
 """
 bot_multiagent.py - Bot Telegram Multi-Agente
 Ecosistema Mayabeque + TutorIA Cuba

@@ -1,3 +1,4 @@
+from contabilidad import registrar_asiento, obtener_estado_resultados, obtener_balance_general
 import json
 from pathlib import Path
 
@@ -80,6 +81,21 @@ def ejecutar_herramienta(nombre, argumentos):
         return escribir_archivo(argumentos.get("ruta", ""), argumentos.get("contenido", ""))
     elif nombre == "crear_carpeta":
         return crear_carpeta(argumentos.get("ruta", ""))
+    elif nombre == "registrar_movimiento_contable":
+        from contabilidad import registrar_asiento
+        return registrar_asiento(
+            fecha=argumentos.get("fecha"),
+            cuenta_debito=argumentos.get("cuenta_debito"),
+            cuenta_credito=argumentos.get("cuenta_credito"),
+            monto=argumentos.get("monto"),
+            descripcion=argumentos.get("descripcion")
+        )
+    elif nombre == "ver_estado_resultados":
+        from contabilidad import obtener_estado_resultados
+        return obtener_estado_resultados(
+            fecha_inicio=argumentos.get("fecha_inicio"),
+            fecha_fin=argumentos.get("fecha_fin")
+        )
     elif nombre == "git_status":
         return git_status()
     elif nombre == "git_commit_push":
@@ -360,6 +376,40 @@ TOOLS_SCHEMA.append({
                 "nombre_archivo": {"type": "string", "description": "Nombre del archivo (opcional, por defecto video_generado.mp4)"}
             },
             "required": ["prompt"]
+        }
+    }
+})
+
+TOOLS_SCHEMA.append({
+    "type": "function",
+    "function": {
+        "name": "registrar_movimiento_contable",
+        "description": "Registra ingresos o gastos en la contabilidad (Partida Doble).",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "fecha": {"type": "string", "description": "Fecha en formato YYYY-MM-DD"},
+                "cuenta_debito": {"type": "string", "description": "Codigo de cuenta a debitar (ej: 822, 110)"},
+                "cuenta_credito": {"type": "string", "description": "Codigo de cuenta a acreditar (ej: 900, 110)"},
+                "monto": {"type": "number", "description": "Cantidad en CUP"},
+                "descripcion": {"type": "string", "description": "Concepto del movimiento"}
+            },
+            "required": ["fecha", "cuenta_debito", "cuenta_credito", "monto", "descripcion"]
+        }
+    }
+})
+TOOLS_SCHEMA.append({
+    "type": "function",
+    "function": {
+        "name": "ver_estado_resultados",
+        "description": "Muestra el resumen de Ingresos, Gastos y Utilidad de un periodo.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "fecha_inicio": {"type": "string", "description": "Fecha inicio YYYY-MM-DD"},
+                "fecha_fin": {"type": "string", "description": "Fecha fin YYYY-MM-DD"}
+            },
+            "required": ["fecha_inicio", "fecha_fin"]
         }
     }
 })
