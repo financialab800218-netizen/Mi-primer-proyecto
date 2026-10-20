@@ -1,3 +1,4 @@
+from almacenamiento import subir_archivo_a_nube
 import os
 from datetime import datetime
 from docx import Document
@@ -34,7 +35,8 @@ def generar_contrato_tcp(nombre: str, nivel: str, categoria: str, porcentaje: fl
         ruta_completa = os.path.join(RUTA_DOCS, nombre_archivo)
         doc.save(ruta_completa)
         
-        return f"Contrato generado: {URL_BASE}{nombre_archivo}"
+        url_nube = subir_archivo_a_nube(nombre_archivo, nombre_archivo)
+        return f"Contrato generado en la nube: {url_nube}"
     except Exception as e:
         return f"Error al generar contrato: {str(e)}"
 
@@ -59,7 +61,8 @@ def generar_pdf(texto: str, nombre_archivo: str):
         ruta_completa = os.path.join(RUTA_DOCS, nombre_archivo)
         pdf.output(ruta_completa)
         
-        return f"PDF generado: {URL_BASE}{nombre_archivo}"
+        url_nube = subir_archivo_a_nube(nombre_archivo, nombre_archivo)
+        return f"PDF generado en la nube: {url_nube}"
     except Exception as e:
         return f"Error al generar PDF: {str(e)}"
 

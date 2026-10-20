@@ -34,7 +34,8 @@ def generar_excel_balance():
         ruta_completa = os.path.join(RUTA_DOCS, nombre_archivo)
         df.to_excel(ruta_completa, index=False)
         
-        url = f"https://lens-portside-masses.ngrok-free.dev/docs/{nombre_archivo}"
+        url_nube = subir_archivo_a_nube(nombre_archivo, nombre_archivo)
+        return f"Excel generado en la nube: {url_nube}"
         return f"Balance generado. Descárgalo aquí: {url}"
     except Exception as e:
         return f"Error al generar Excel: {str(e)}"
