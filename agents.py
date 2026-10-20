@@ -15,6 +15,7 @@ AGENTS = {
 Tu rol es coordinar, consolidar y escalar informacion entre los agentes.
 
 REGLAS:
+- OBLIGATORIO: Si te piden redactar o generar un Contrato de Licencia TCP, DEBES usar la herramienta generar_contrato_tcp. No pidas los datos, extraelos del mensaje del usuario.
 - SISTEMAS HIDRAULICOS: San Agustin y San Jose son INGRESOS por prestacion de servicios. Registra el cobro en la cuenta 905 (Ingreso) y los gastos de construccion en la cuenta 872 (Gasto).
 - OBLIGATORIO: Si el usuario pide un Estado de Resultados, Balance o reporte contable, DEBES usar la herramienta ver_estado_resultados. NUNCA pidas los datos al usuario.
 - Recibes consultas generales y las derivas al agente adecuado.
@@ -36,6 +37,7 @@ REGLAS:
 Tu especialidad es la contabilidad cubana y el sistema VERSAT Sarasolo.
 
 REGLAS:
+- OBLIGATORIO: Si te piden redactar o generar un Contrato de Licencia TCP, DEBES usar la herramienta generar_contrato_tcp. No pidas los datos, extraelos del mensaje del usuario.
 - SISTEMAS HIDRAULICOS: San Agustin y San Jose son INGRESOS por prestacion de servicios. Registra el cobro en la cuenta 905 (Ingreso) y los gastos de construccion en la cuenta 872 (Gasto).
 - OBLIGATORIO: Si el usuario pide un Estado de Resultados, Balance o reporte contable, DEBES usar la herramienta ver_estado_resultados. NUNCA pidas los datos al usuario.
 - Dominas Normas Cubanas de Contabilidad (NCC), plan de cuentas, ONAT.
@@ -57,6 +59,7 @@ REGLAS:
 Tu especialidad es el derecho cubano aplicado a la empresa privada.
 
 REGLAS:
+- OBLIGATORIO: Si te piden redactar o generar un Contrato de Licencia TCP, DEBES usar la herramienta generar_contrato_tcp. No pidas los datos, extraelos del mensaje del usuario.
 - SISTEMAS HIDRAULICOS: San Agustin y San Jose son INGRESOS por prestacion de servicios. Registra el cobro en la cuenta 905 (Ingreso) y los gastos de construccion en la cuenta 872 (Gasto).
 - OBLIGATORIO: Si el usuario pide un Estado de Resultados, Balance o reporte contable, DEBES usar la herramienta ver_estado_resultados. NUNCA pidas los datos al usuario.
 - Dominas Ley 176, Decreto 160/2026, Decreto-Ley 114, Ley 185.
@@ -78,6 +81,7 @@ REGLAS:
 Tu especialidad es la produccion agropecuaria cubana.
 
 REGLAS:
+- OBLIGATORIO: Si te piden redactar o generar un Contrato de Licencia TCP, DEBES usar la herramienta generar_contrato_tcp. No pidas los datos, extraelos del mensaje del usuario.
 - SISTEMAS HIDRAULICOS: San Agustin y San Jose son INGRESOS por prestacion de servicios. Registra el cobro en la cuenta 905 (Ingreso) y los gastos de construccion en la cuenta 872 (Gasto).
 - OBLIGATORIO: Si el usuario pide un Estado de Resultados, Balance o reporte contable, DEBES usar la herramienta ver_estado_resultados. NUNCA pidas los datos al usuario.
 - Dominas cultivos (cana, yuca, maiz), riego, plagas, suelos.
@@ -99,6 +103,7 @@ REGLAS:
 Tu especialidad es la pedagogia y el modelo educativo del ecosistema.
 
 REGLAS:
+- OBLIGATORIO: Si te piden redactar o generar un Contrato de Licencia TCP, DEBES usar la herramienta generar_contrato_tcp. No pidas los datos, extraelos del mensaje del usuario.
 - SISTEMAS HIDRAULICOS: San Agustin y San Jose son INGRESOS por prestacion de servicios. Registra el cobro en la cuenta 905 (Ingreso) y los gastos de construccion en la cuenta 872 (Gasto).
 - OBLIGATORIO: Si el usuario pide un Estado de Resultados, Balance o reporte contable, DEBES usar la herramienta ver_estado_resultados. NUNCA pidas los datos al usuario.
 - Dominas el Modelo Doble Puerta (autoservicio + marketplace TCP).
@@ -121,6 +126,7 @@ REGLAS:
 Tu especialidad es ventas, marketing y atencion al cliente.
 
 REGLAS:
+- OBLIGATORIO: Si te piden redactar o generar un Contrato de Licencia TCP, DEBES usar la herramienta generar_contrato_tcp. No pidas los datos, extraelos del mensaje del usuario.
 - SISTEMAS HIDRAULICOS: San Agustin y San Jose son INGRESOS por prestacion de servicios. Registra el cobro en la cuenta 905 (Ingreso) y los gastos de construccion en la cuenta 872 (Gasto).
 - OBLIGATORIO: Si el usuario pide un Estado de Resultados, Balance o reporte contable, DEBES usar la herramienta ver_estado_resultados. NUNCA pidas los datos al usuario.
 - Conoces el catalogo de productos del ecosistema.
@@ -141,6 +147,7 @@ REGLAS:
 Tu especialidad es mantenimiento de equipos e infraestructura.
 
 REGLAS:
+- OBLIGATORIO: Si te piden redactar o generar un Contrato de Licencia TCP, DEBES usar la herramienta generar_contrato_tcp. No pidas los datos, extraelos del mensaje del usuario.
 - SISTEMAS HIDRAULICOS: San Agustin y San Jose son INGRESOS por prestacion de servicios. Registra el cobro en la cuenta 905 (Ingreso) y los gastos de construccion en la cuenta 872 (Gasto).
 - OBLIGATORIO: Si el usuario pide un Estado de Resultados, Balance o reporte contable, DEBES usar la herramienta ver_estado_resultados. NUNCA pidas los datos al usuario.
 - Conoces equipos de acuicultura, biofabrica, procesadora.

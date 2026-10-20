@@ -121,6 +121,23 @@ def ejecutar_herramienta(nombre, argumentos):
         return obtener_balance_general()
 
     
+    
+    elif nombre == "generar_contrato_tcp":
+        from documentos_legales import generar_contrato_tcp
+        return generar_contrato_tcp(
+            nombre=argumentos.get("nombre"),
+            nivel=argumentos.get("nivel"),
+            categoria=argumentos.get("categoria"),
+            porcentaje=float(argumentos.get("porcentaje")),
+            bono_base=float(argumentos.get("bono_base"))
+        )
+    elif nombre == "generar_pdf_legal":
+        from documentos_legales import generar_pdf
+        return generar_pdf(argumentos.get("texto"), argumentos.get("nombre_archivo"))
+    elif nombre == "leer_documento_legal":
+        from documentos_legales import leer_documento
+        return leer_documento(argumentos.get("nombre_archivo"))
+
     elif nombre == "generar_excel_balance":
         from documentos import generar_excel_balance
         return generar_excel_balance()
@@ -486,6 +503,54 @@ TOOLS_SCHEMA.append({
         "parameters": {
             "type": "object",
             "properties": {}
+        }
+    }
+})
+
+TOOLS_SCHEMA.append({
+    "type": "function",
+    "function": {
+        "name": "generar_contrato_tcp",
+        "description": "Genera un contrato Word para un profesor TCP.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "nombre": {"type": "string"},
+                "nivel": {"type": "string"},
+                "categoria": {"type": "string"},
+                "porcentaje": {"type": "number"},
+                "bono_base": {"type": "number"}
+            },
+            "required": ["nombre", "nivel", "categoria", "porcentaje", "bono_base"]
+        }
+    }
+})
+TOOLS_SCHEMA.append({
+    "type": "function",
+    "function": {
+        "name": "generar_pdf_legal",
+        "description": "Genera un PDF a partir de un texto legal.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "texto": {"type": "string"},
+                "nombre_archivo": {"type": "string"}
+            },
+            "required": ["texto", "nombre_archivo"]
+        }
+    }
+})
+TOOLS_SCHEMA.append({
+    "type": "function",
+    "function": {
+        "name": "leer_documento_legal",
+        "description": "Lee un archivo Word o PDF y devuelve su texto.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "nombre_archivo": {"type": "string"}
+            },
+            "required": ["nombre_archivo"]
         }
     }
 })
