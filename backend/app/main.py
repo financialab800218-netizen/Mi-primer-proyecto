@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from config import settings
+from routers import billetera
 from routers import health, ia, institucional, tcp, modulos, auth, agentes
 
 class NoCacheMiddleware:
@@ -48,6 +49,7 @@ app.include_router(tcp.router)
 app.include_router(modulos.router)
 app.include_router(auth.router)
 app.include_router(agentes.router)
+app.include_router(billetera.router, prefix="/api/billetera", tags=["Billetera"])
 
 # ============================================
 # Servir la PWA (archivos estáticos)
