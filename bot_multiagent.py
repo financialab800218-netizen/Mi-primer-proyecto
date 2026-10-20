@@ -174,6 +174,31 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     await update.message.chat.send_action(action="typing")
 
+    
+    
+    
+    # CORTOCIRCUITO PARA CONTRATOS (Extraccion de nombre mejorada)
+    if mensaje and ("contrato" in mensaje.lower() and "tcp" in mensaje.lower()):
+        from documentos_legales import generar_contrato_tcp
+        
+        # Buscamos el nombre propio usando la logica de que empieza con Mayuscula
+        palabras = mensaje.split()
+        nombre_extraido = "Profesor Prueba"
+        for i, p in enumerate(palabras):
+            if p.lower() in ["profesor", "profesora"]:
+                # Tomamos las siguientes 2 palabras si existen
+                if i + 2 < len(palabras):
+                    nombre_extraido = f"{palabras[i+1]} {palabras[i+2]}"
+                elif i + 1 < len(palabras):
+                    nombre_extraido = palabras[i+1]
+                break
+                
+        enlace = generar_contrato_tcp(nombre_extraido, "Universitario", "Plata", 40.0, 2290.0)
+        await update.message.reply_text(f"Contrato generado para {nombre_extraido}: {enlace}")
+        return
+
+
+
     if tiene_llm():
         respuesta = await consultar_llm_router(agente["system_prompt"], mensaje)
         firma = f"\n\n- {agente['nombre']}, {agente['cargo']}"

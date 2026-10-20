@@ -1,3 +1,4 @@
+import unicodedata
 from almacenamiento import subir_archivo_a_nube
 import os
 from datetime import datetime
@@ -31,7 +32,9 @@ def generar_contrato_tcp(nombre: str, nivel: str, categoria: str, porcentaje: fl
         doc.add_heading('CUMPLIMIENTO LEGAL', level=1)
         doc.add_paragraph("Este contrato cumple con el Decreto 160/2026 y la Ley 176. Tutoria Cuba no es una academia, es una plataforma tecnológica.")
         
-        nombre_archivo = f"contrato_{nombre.replace(' ', '_')}.docx"
+        # Limpiar tildes y caracteres especiales del nombre
+        nombre_limpio = unicodedata.normalize("NFKD", nombre).encode("ASCII", "ignore").decode("utf-8").replace(" ", "_")
+        nombre_archivo = f"contrato_{nombre_limpio}.docx"
         ruta_completa = os.path.join(RUTA_DOCS, nombre_archivo)
         doc.save(ruta_completa)
         
