@@ -115,6 +115,16 @@ def ejecutar_herramienta(nombre, argumentos):
     elif nombre == "consultar_saldo":
         from contabilidad import obtener_saldo_cuenta
         return obtener_saldo_cuenta(argumentos.get("codigo_cuenta"))
+    
+    elif nombre == "ver_balance_general":
+        from contabilidad import obtener_balance_general
+        return obtener_balance_general()
+
+    
+    elif nombre == "generar_excel_balance":
+        from documentos import generar_excel_balance
+        return generar_excel_balance()
+
     elif nombre == "generar_excel_contabilidad":
         from documentos import generar_excel_asientos
         return generar_excel_asientos()
@@ -449,6 +459,30 @@ TOOLS_SCHEMA.append({
     "function": {
         "name": "generar_excel_contabilidad",
         "description": "Genera un archivo Excel con todos los asientos contables y devuelve el enlace de descarga.",
+        "parameters": {
+            "type": "object",
+            "properties": {}
+        }
+    }
+})
+
+TOOLS_SCHEMA.append({
+    "type": "function",
+    "function": {
+        "name": "ver_balance_general",
+        "description": "Genera el Balance General contable con Activos, Pasivos y Patrimonio.",
+        "parameters": {
+            "type": "object",
+            "properties": {}
+        }
+    }
+})
+
+TOOLS_SCHEMA.append({
+    "type": "function",
+    "function": {
+        "name": "generar_excel_balance",
+        "description": "Genera un archivo Excel con la tabla del Balance General.",
         "parameters": {
             "type": "object",
             "properties": {}
