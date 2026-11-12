@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0a4d68">
+<title>TutorIA Cuba - Agentes</title>
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/chat.css">
+</head>
+<body class="chat-body">
+<div class="chat-app">
+<header class="chat-header">
+<a href="app.html" class="back-btn">←</a>
+<div class="agente-info">
+<span id="agente-emoji" class="agente-emoji">P</span>
+<div>
+<strong id="agente-nombre">Pablo</strong>
+<small id="agente-cargo">Director Adjunto</small>
+</div>
+</div>
+</header>
+<div class="selector-agentes" id="selector-agentes">
+<button class="agente-btn active" data-agente="pablo">Pablo</button>
+<button class="agente-btn" data-agente="ernesto">Ernesto</button>
+<button class="agente-btn" data-agente="marta">Marta</button>
+<button class="agente-btn" data-agente="camilo">Camilo</button>
+<button class="agente-btn" data-agente="celia">Celia</button>
+<button class="agente-btn" data-agente="julian">Julián</button>
+<button class="agente-btn" data-agente="ruben">Rubén</button>
+</div>
+
+<main class="chat-mensajes" id="chat-mensajes">
+<div class="mensaje-burbuja assistant">
+Hola, soy Pablo. ¿En qué puedo ayudarte?
+</div>
+</main>
+<form class="chat-form" id="chat-form">
+<input type="text" id="chat-input" placeholder="Escribe tu mensaje..." autocomplete="off" required>
+<button type="submit" id="chat-enviar">➤</button>
+</form>
+</div>
+<script src="js/chat.js"></script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0a4d68">
+<title>TutorIA Cuba</title>
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="app">
+<header class="hero">
+<img src="https://ui-avatars.com/api/?name=TutorIA&background=0a4d68&color=fff&size=80&rounded=true" alt="TutorIA" class="logo">
+<h1>TutorIA Cuba</h1>
+<p>Ecosistema Mayabeque</p>
+</header>
+<main class="tabs">
+<div class="tab-buttons">
+<button id="tab-login" class="active">Entrar</button>
+<button id="tab-registro">Crear cuenta</button>
+</div>
+
+<form id="form-login" class="form">
+<h2>Inicia sesion</h2>
+<input type="email" id="login-email" placeholder="Correo" required>
+<input type="password" id="login-password" placeholder="Contrasena" required>
+<button type="submit" class="btn-primary">Entrar</button>
+</form>
+
+<form id="form-registro" class="form hidden">
+<h2>Crea tu cuenta</h2>
+<input type="text" id="reg-nombre" placeholder="Nombre completo" required>
+<input type="email" id="reg-email" placeholder="Correo" required>
+<input type="password" id="reg-password" placeholder="Contrasena (min 6)" required minlength="6">
+<button type="submit" class="btn-primary">Crear cuenta</button>
+</form>
+<div class="alternativas">
+<p class="separador">o</p>
+<a href="https://t.me/tutoria_cuba_bot" class="btn-telegram" target="_blank">
+Entrar con Telegram
+</a>
+<button id="btn-invitado" class="btn-invitado">
+Continuar como invitado
+</button>
+</div>
+
+<div id="mensaje" class="mensaje hidden"></div>
+</main>
+
+<footer>
+<p>© 2026 TutorIA Cuba - Mayabeque</p>
+</footer>
+</div>
+<script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+MANUAL DE CONTABILIDAD PARA EL AGENTE ERNESTO (PDL DESSPEZ)
+
+1. PRINCIPIO DE LA PARTIDA DOBLE:
+Cada transacción tiene un DEBE (lo que entra o se gasta) y un HABER (de dónde sale el dinero o quién lo financia). 
+La suma del DEBE siempre debe ser igual a la suma del HABER.
+
+2. ESTRUCTURA DE LAS CUENTAS (Resolución 360/2013):
+- ACTIVOS (110 Banco, 240 AFT): Aumentan por el DEBE, disminuyen por el HABER.
+- PASIVOS (520 Préstamos): Aumentan por el HABER, disminuyen por el DEBE.
+- PATRIMONIO (600 Capital): Aumenta por el HABER, disminuye por el DEBE.
+- INGRESOS (900 Ventas): Aumentan por el HABER (te dan dinero).
+- GASTOS (810 Costo de Ventas, 822 Gastos Generales): Aumentan por el DEBE (salen del banco).
+
+3. EL PROCESO DE CIERRE (El ciclo de la "Muerte" de las cuentas):
+Cuando se registra una venta (Ingreso) y un costo (Gasto), estas cuentas se van acumulando durante el año. 
+Al final del período (o cuando se requiera), estas cuentas se "matan" (se cierran) contra la cuenta de RESULTADOS (999) o directamente contra el PATRIMONIO (600).
+- Para cerrar un Ingreso: Se debita la cuenta de Ingreso (900) y se acredita el Patrimonio (600).
+- Para cerrar un Gasto: Se debita el Patrimonio (600) y se acredita la cuenta de Gasto (810).
+
+4. CÓMO REGISTRAR UN GASTO (Ej. Pago de Salario de 1,000 CUP):
+- DEBE: 822 (Gastos Generales) por 1,000.
+- HABER: 110 (Banco) por 1,000.
+(Lógica: El gasto aumenta por el Debe, el banco disminuye por el Haber).
+
+5. CÓMO REGISTRAR UN INGRESO (Ej. Venta de Pescado por 5,000 CUP):
+- DEBE: 110 (Banco) por 5,000.
+- HABER: 900 (Ventas) por 5,000.
+(Lógica: El banco aumenta por el Debe, el ingreso aumenta por el Haber).
+
+6. REGLA DE ORO:
+NUNCA inventes un asiento sin saber de dónde sale el dinero (Haber) y a dónde va (Debe).
+Si el usuario te pide registrar algo, pregunta: "¿De qué cuenta sale el dinero y a qué cuenta entra?".

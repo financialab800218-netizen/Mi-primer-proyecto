@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TutorIA Cuba - Panel del Profesor</title>
+    <style>
+        :root {
+            --primary: #1A365D; /* Azul profundo */
+            --secondary: #E53E3E; /* Rojo cubano */
+            --bg: #F7FAFC;
+            --card-bg: #FFFFFF;
+            --text: #2D3748;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            margin: 0;
+            padding: 0;
+            color: var(--text);
+        }
+        .header {
+            background-color: var(--primary);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 4px solid var(--secondary);
+        }
+        .header img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: white;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+        .container {
+            padding: 20px;
+            max-width: 500px;
+            margin: auto;
+        }
+        .card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .saldo-title {
+            font-size: 14px;
+            color: #718096;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .saldo {
+            font-size: 36px;
+            font-weight: bold;
+            color: var(--primary);
+            margin: 10px 0;
+        }
+        .buttons-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .btn {
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+        .btn-secondary {
+            background-color: var(--secondary);
+            color: white;
+        }
+        .btn-locked {
+            background-color: #E2E8F0;
+            color: #A0AEC0;
+            cursor: not-allowed;
+        }
+        .locked-message {
+            font-size: 12px;
+            margin-top: 5px;
+            color: #718096;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <!-- Aquí va el logo del libro que elegiste -->
+        <img src="https://cdn-icons-png.flaticon.com/512/3389/3389081.png" alt="TutorIA Cuba Logo" style="width: 80px; height: 80px; background: white; padding: 10px; border-radius: 50%; object-fit: contain;">
+        <h1>TutorIA Cuba</h1>
+        <p>Panel del Profesor</p>
+    </div>
+
+    <div class="container">
+        <!-- Tarjeta de Saldo -->
+        <div class="card">
+            <div class="saldo-title">Mi Billetera Virtual</div>
+            <div class="saldo">$15,000.00 CUP</div>
+            <p>Hola, <strong>Yosbel Collazo</strong></p>
+            
+            <div class="buttons-grid">
+                <a href="https://t.me/TutorIACubaAssistant_bot" target="_blank" class="btn btn-primary" style="text-decoration: none; display: inline-block; text-align: center;">Recargar</a>
+                <a href="https://t.me/TutorIACubaAssistant_bot" target="_blank" class="btn btn-secondary" style="text-decoration: none; display: inline-block; text-align: center;">Retirar</a>
+            </div>
+        </div>
+
+        <!-- Tarjeta de Cursos -->
+        <div class="card">
+            <h3>Mis Cursos</h3>
+            <p>Aún no has creado ningún curso.</p>
+            <a href="https://t.me/TutorIACubaAssistant_bot" target="_blank" class="btn btn-primary" style="text-decoration: none; display: block; width: 100%; text-align: center; box-sizing: border-box;">Crear Nuevo Curso</a>
+        </div>
+
+        <!-- Tarjeta de QvaPay (Bloqueada) -->
+        <div class="card">
+            <h3>Nivel Diamante 💎</h3>
+            <p>Desbloquea retiros internacionales.</p>
+            <button class="btn btn-locked" disabled>Conectar con QvaPay</button>
+            <div class="locked-message">Alcanza 10,000 CUP en ventas para desbloquear.</div>
+        </div>
+    </div>
+
+
+<script>
+    const usuario = JSON.parse(localStorage.getItem('usuario_tutoria'));
+    if (!usuario) {
+        window.location.href = 'login.html'; // Si no hay sesión, lo manda al login
+    } else {
+        // Si hay sesión, actualizamos el nombre y el saldo en la página
+        document.querySelector('.saldo').innerText = `$${usuario.saldo_cup.toFixed(2)} CUP`;
+        const saludo = document.querySelector('.card p');
+        if(saludo) saludo.innerHTML = `Hola, <strong>${usuario.nombre}</strong>`;
+    }
+</script>
+</body>
+
+</html>
